@@ -10,11 +10,11 @@ Column {
     spacing: 12
     Item {
         width: parent.width; height: 34
-        Label { anchors.verticalCenter: parent.verticalCenter; text: carousel.title; font.pixelSize: 20; font.bold: true; color: Design.Palette.ink }
+        TextStyles { anchors.verticalCenter: parent.verticalCenter; text: carousel.title }
         Row {
             anchors.right: parent.right; spacing: 8
-            NeonButton { text: "‹"; height: 32; enabled: view.currentIndex>0; onClicked: view.decrementCurrentIndex() }
-            NeonButton { text: "›"; height: 32; enabled: view.currentIndex<view.count-1; onClicked: view.incrementCurrentIndex() }
+            OutlinedButton { text: "‹"; height: 32; enabled: view.currentIndex>0; onClicked: view.decrementCurrentIndex() }
+            OutlinedButton { text: "›"; height: 32; enabled: view.currentIndex<view.count-1; onClicked: view.incrementCurrentIndex() }
         }
     }
     ListView {

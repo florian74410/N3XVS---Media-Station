@@ -16,6 +16,8 @@ AbstractButton {
             Text { anchors.centerIn: parent; visible: !tile.itemData.art; text: "▷"; color: Design.Palette.accent; font.pixelSize: 38 }
         }
         Text { x: 12; width: parent.width-24; elide: Text.ElideRight; text: tile.itemData.title || ""; color: Design.Palette.ink; font.bold: true; font.pixelSize: 16 }
-        Text { x: 12; color: tile.demo ? Design.Palette.muted : (tile.itemData.seen ? "#ff9198" : tile.itemData.position ? "#f3cd78" : "#8fd5b4"); text: tile.demo ? "DÉMO  /  "+tile.itemData.genre : (tile.itemData.seen ? "●  Déjà vu" : tile.itemData.position ? "●  En cours" : "●  Jamais vu"); font.pixelSize: 12 }
+        Row { x:12; spacing:6
+        StatusDot {anchors.verticalCenter:parent.verticalCenter; visible:!tile.demo && tile.itemData.seen!==undefined; seen:!!tile.itemData.seen; started:!!tile.itemData.position}
+        Text { color: tile.demo ? Design.Palette.muted : (tile.itemData.seen ? "#ff9198" : tile.itemData.position ? "#f3cd78" : "#8fd5b4"); text: tile.demo ? "DÉMO  /  "+tile.itemData.genre : (tile.itemData.seen===undefined ? (tile.itemData.folder!==undefined?"Dossier":"Ressource réseau") : tile.itemData.seen ? "Déjà vu" : tile.itemData.position ? "En cours" : "Jamais vu"); font.pixelSize: 12 } }
     }
 }

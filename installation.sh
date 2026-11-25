@@ -6,6 +6,8 @@ MODE="check"; OFFLINE_DIR=""
 usage() { echo "Usage: $0 [--check|--install|--offline /chemin/vers/deb|--dry-run]"; }
 while (($#)); do
   case "$1" in
+    --profile) case "${2:-}" in core|media|network|dev|session|storage|optional|diagnostic) APT_LIST="$ROOT/MAIN/Dependancy/apt/packages-$2.txt";; *) exit 2;; esac; shift 2;;
+    --install-session) exec "$ROOT/MAIN/App/packaging/install-session.sh";;
     --check) MODE=check; shift;;
     --install) MODE=install; shift;;
     --dry-run) MODE=dry; shift;;
@@ -15,6 +17,19 @@ while (($#)); do
   esac
 done
 [[ "$(uname -s)" == Linux ]] || { echo "Linux requis" >&2; exit 1; }
+# shellcheck source=/dev/null
+. /etc/os-release
+if [[ "$ID" == linuxmint && "${VERSION_ID%%.*}" == 22 && "$(dpkg --print-architecture)" == amd64 && "$APT_LIST" == */packages-core.txt && "$MODE" != offline ]]; then
+  lock="$ROOT/MAIN/Dependancy/qt-pyside6/mint22-amd64.txt"
+  case "$MODE" in
+    check) [[ -x "$ROOT/.venv/bin/python" ]] && "$ROOT/.venv/bin/python" -c 'from PySide6.QtQuick import QQuickWindow' && exit 0
+      echo "Installer le profil core Mint dans .venv"; exit 3;;
+    dry) echo "Mint amd64 · python3-venv puis deux wheels Qt vérifiées dans .venv"; exit;;
+    install) sudo apt-get install --no-install-recommends python3-venv libxcb-cursor0 libxkbcommon-x11-0 libegl1
+      /usr/bin/python3 -m venv "$ROOT/.venv"
+      exec "$ROOT/.venv/bin/python" -m pip install --require-hashes --only-binary=:all: -r "$lock";;
+  esac
+fi
 mapfile -t PACKAGES < <(grep -Ev '^[[:space:]]*(#|$)' "$APT_LIST")
 echo "[INFO] Architecture: $(dpkg --print-architecture 2>/dev/null || uname -m)"
 if [[ "$MODE" == check ]]; then
@@ -37,14 +52,7 @@ if [[ "$MODE" == dry ]]; then
   exit 0
 fi
 if [[ "$MODE" == offline ]]; then
-  [[ -d "$OFFLINE_DIR" ]] || { echo "Répertoire .deb introuvable" >&2; exit 1; }
-  [[ -f "$OFFLINE_DIR/SHA256SUMS" ]] || { echo "SHA256SUMS manquant: installation refusée" >&2; exit 1; }
-  (cd "$OFFLINE_DIR" && sha256sum -c SHA256SUMS)
-  shopt -s nullglob
-  DEBS=("$OFFLINE_DIR"/*.deb)
-  (("${#DEBS[@]}" > 0)) || { echo "Aucun .deb" >&2; exit 1; }
-  echo "[INFO] Installation locale de ${#DEBS[@]} paquets (aucun téléchargement autorisé)"
-  exec sudo apt-get --no-download install --no-install-recommends "${DEBS[@]}"
+  exec python3 "$ROOT/MAIN/Dependancy/apt/install-offline.py" "$OFFLINE_DIR"
 fi
 echo "[INFO] Installation depuis les dépôts APT configurés (confirmation sudo)"
 exec sudo apt-get install --no-install-recommends "${PACKAGES[@]}"

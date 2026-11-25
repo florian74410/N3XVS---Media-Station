@@ -1,0 +1,4 @@
+openbox
+xbindkeys
+x11-utils
+wmctrl

@@ -1,0 +1,1 @@
+{"distribution":"Linux Mint 22.x (Ubuntu Noble)", "architecture":"amd64","core":{"python":"distribution python3 + python3-venv","venv":["PySide6-Essentials==6.9.3","shiboken6==6.9.3"]},"apt_profiles":["media","network","storage","dev","session","optional","diagnostic"],"validation":"Tester les candidats APT Mint avant installation. Aucun paquet Debian dans ce profil."}

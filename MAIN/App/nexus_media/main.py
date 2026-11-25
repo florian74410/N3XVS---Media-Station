@@ -35,6 +35,7 @@ def main():
         window = engine.rootObjects()[0]
         if os.environ.get("NEXUS_FULLSCREEN") == "1":
             window.showFullScreen()
+        signal.signal(signal.SIGUSR1, lambda *_: (window.show(),window.raise_(),window.requestActivate()))
         signal.signal(signal.SIGTERM, lambda *_: app.quit())
         signal.signal(signal.SIGINT, lambda *_: app.quit())
         pid = state/"nexus.pid"
@@ -42,6 +43,7 @@ def main():
         try:
             return app.exec()
         finally:
+            backend.stopLocal()
             pid.unlink(missing_ok=True)
             backend.catalog.db.close()
 

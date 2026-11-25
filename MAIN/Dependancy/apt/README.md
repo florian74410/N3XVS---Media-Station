@@ -1,0 +1,1 @@
+Les fichiers packages-*.txt déclarent les dépendances directes. Les fichiers trixie-arm64-*.lock.json proviennent des .deb réellement téléchargés pour les trois bundles v0.1. Le générateur utilise les dépôts Debian signés actifs à la date de préparation. La façon de reconstruire et de vérifier le lot est décrite dans ../../Docs/INSTALL-OFFLINE.md.

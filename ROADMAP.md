@@ -1,35 +1,12 @@
-# ROADMAP — N3XVS Media Station
+# N3XVS Media Station
 
-## 0.0.1 — Fondation et prototype GUI
-- [x] Structure `MAIN/{App,Assets,Docs,Dependancy}`.
-- [x] Scripts prudents de base ; modes de vérification.
-- [x] GUI Qt Quick/QML de démonstration navigable avec mosaïques simulées.
-- [ ] Intégrer les 3 images sources fournies par l'utilisateur dans `MAIN/Assets/`.
-- [ ] Tester la GUI sur Linux Mint XFCE (X11), 1280×800 et 2560×1440.
-- [ ] Vérifier dépendances ARM64 et sortie vidéo réelle TX8.
-
-## 0.1 — Bibliothèque locale
-- [ ] Indexeur HDD/USB en lecture seule, miniatures mises en cache, SQLite, états (jamais vu/en cours/déjà vu).
-- [ ] Lecture via VLC ; suivi de progression pour médias locaux.
-- [ ] Filtres par genre, carrousels espacés, clavier et souris, responsive.
-
-## 0.2 — Sources réseau
-- [ ] SMB, NFS ; DLNA/UPnP AV via couche découplée ; découvertes testées.
-- [ ] Playlist IPTV M3U/HLS/RTSP autorisée ; diagnostic de flux et choix HD/SD.
-- [ ] Free TV+ via site/application officiel si support matériel/DRM confirmé.
-
-## 0.3 — Handoff plateformes
-- [ ] Lanceurs Netflix, Disney+, Prime Video, Apple TV, Free TV, Replays.
-- [ ] Retour GUI fiable à la fermeture, Ctrl+N et raccourci système hors processus.
-- [ ] Catalogues facultatifs sur APIs autorisées ; métadonnées distinctes de disponibilité réelle ; deep links seulement confirmés.
-
-## 0.4 — Session Media et box TX8
-- [ ] Session de connexion `Multimedia` séparée (sans lancer XFCE), retour à XFCE intact.
-- [ ] Gestion supervision systemd --user et reprise après crash.
-- [ ] Mesures 2 Go RAM, GPU Mali-T820, décodage V4L2/DRM, 1440p et 1080p.
-- [ ] Bundle Debian ARM64 offline, dépendances transitives vérifiées, licence et SHA256.
-
-## Plus tard
-AirPlay UxPlay, Miracast, WebRTC, EPG XMLTV, streaming distant, A/B update, stockage hybride.
-
-**Barrière de sécurité :** aucun flash eMMC sans identification du DTB, backup vérifié et procédure de restauration.
+| Étape | État et critère |
+|---|---|
+| v0.1 GUI et bibliothèque | Implémentées. Valider sur le Mint XFCE cible le défilement, la lecture réelle et la session depuis le gestionnaire de connexion. |
+| v0.1 dépendances | Bundles Debian trixie arm64 core, diagnostic et core+media+network résolus, téléchargés et simulés hors ligne. Installation native sur un OS de test à valider. |
+| v0.1 visuels | Deux références identifiées. Intégrer la ville originale dès réception, puis comparer les quatre tailles. |
+| v0.2 réseau | Valider le parcours ContentDirectory sur Freebox et NAS réels, recherche de chemins SMB/NFS, reprise après coupure de source. |
+| v0.2 lecture | Mesurer sur Mint puis sur TX8 la vidéo, le son, la reprise libVLC et le retour du navigateur après DRM. |
+| v0.2 stockage | Sauvegarde SQLite cohérente, cache d'affiches sous quota, surveillance de plusieurs volumes amovibles. |
+| TX8 | Confirmer la carte et ses pilotes, sauvegarder le système précédent, tester sur support externe, mesurer mémoire et décodage. Déploiement sur décision du propriétaire. |
+| Plus tard | AirPlay, Miracast, XMLTV, API de métadonnées sous licence et mise à jour transactionnelle. |
