@@ -1,246 +1,122 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
+import QtQuick.Dialogs
 import "components"
-
+import "theme" as Design
 ApplicationWindow {
-  id: app
-  visible: true
-  width: 1366; height: 768
-  minimumWidth: 630; minimumHeight: 420
-  title: "N3XVS Multimedia — prototype 0.0.1"
-  color: "#050b15"
-  property int pageIndex: 0
-  property var menuEntries: ["Accueil", "Netflix", "Disney+", "Free TV", "TV", "Replays", "Bibliothèque", "DLNA", "Applications"]
-  property var platforms: ({
-    "Netflix": "https://www.netflix.com/",
-    "Disney+": "https://www.disneyplus.com/",
-    "Free TV": "https://tv.free.fr/",
-    "Prime Video": "https://www.primevideo.com/",
-    "Apple TV": "https://tv.apple.com/fr/"
-  })
-  property string activePage: menuEntries[pageIndex]
-  property var demoSets: ({
-    "Accueil": [
-      { label:"Continuer le visionnage", media:[
-        {title:"Série de démonstration", genre:"Série", year:"2026", time:"42 min", status:"En cours"},
-        {title:"Documentaire de démonstration", genre:"Documentaire", year:"2025", time:"58 min", status:"Déjà vu"},
-        {title:"Film de démonstration", genre:"Film", year:"2024", time:"1 h 45", status:"Jamais vu"}
-      ]},
-      { label:"Science-fiction", media:[
-        {title:"Voyage orbital", genre:"Science-fiction", year:"2025", time:"2 h 07", status:"Jamais vu"},
-        {title:"Ville néon", genre:"Science-fiction", year:"2026", time:"1 h 35", status:"En cours"},
-        {title:"Archives spatiales", genre:"Science-fiction", year:"2024", time:"1 h 50", status:"Déjà vu"}
-      ]}
-    ],
-    "Netflix": [{label:"Catalogue illustratif — non connecté",media:[
-      {title:"Exemple série",genre:"Série",year:"2026",time:"48 min",status:"En cours"},
-      {title:"Exemple film",genre:"Film",year:"2025",time:"1 h 54",status:"Jamais vu"}
-    ]}],
-    "Disney+": [{label:"Catalogue illustratif — non connecté",media:[
-      {title:"Exemple animation",genre:"Animation",year:"2025",time:"1 h 38",status:"Jamais vu"}
-    ]}],
-    "Free TV": [{label:"TV et replay — démonstration",media:[
-      {title:"Chaîne exemple",genre:"Télévision",year:"2026",time:"Direct",status:"Jamais vu"}
-    ]}],
-    "TV": [{label:"Chaînes Freebox — démonstration",media:[
-      {title:"France 2 (exemple)",genre:"RTSP / IPTV",year:"Direct",time:"HD",status:"Jamais vu"},
-      {title:"Arte (exemple)",genre:"RTSP / IPTV",year:"Direct",time:"HD",status:"Jamais vu"}
-    ]}],
-    "Replays": [{label:"Programmes en replay — démonstration",media:[
-      {title:"Replay exemple",genre:"Replay",year:"2026",time:"52 min",status:"Jamais vu"}
-    ]}],
-    "Bibliothèque": [
-      {label:"Films locaux — démonstration", media:[
-        {title:"Film sur HDD",genre:"Stockage USB",year:"2025",time:"1 h 47",status:"Jamais vu"},
-        {title:"Film sur NAS",genre:"SMB / NFS",year:"2024",time:"2 h 12",status:"En cours"}
-      ]},
-      {label:"Séries locales — démonstration",media:[
-        {title:"Série personnelle",genre:"Bibliothèque",year:"2025",time:"51 min",status:"Déjà vu"}
-      ]}
-    ],
-    "DLNA": [{label:"Serveurs réseau — simulation, pas de scan réel",media:[
-      {title:"NAS-Cinema",genre:"Serveur DLNA",year:"Local",time:"—",status:"Jamais vu"},
-      {title:"Freebox Media",genre:"Serveur DLNA",year:"Local",time:"—",status:"Jamais vu"}
-    ]}],
-    "Applications": [{label:"Services officiels — raccourcis", media:[
-      {title:"Prime Video",genre:"Lanceur Web",year:"—",time:"—",status:"Jamais vu"},
-      {title:"Apple TV",genre:"Lanceur Web",year:"—",time:"—",status:"Jamais vu"}
-    ]}]
-  })
-  property var currentSections: demoSets[activePage] || demoSets["Accueil"]
-  function showMessage(t) { messageBox.text = t; messageBox.open(); }
-  function openProvider(name) {
-    var url = platforms[name]
-    if (!url) { showMessage("Aucun lanceur officiel configuré pour " + name); return; }
-    Qt.openUrlExternally(url)
-  }
-  Rectangle {
-    anchors.fill: parent
-    gradient: Gradient {
-      GradientStop { position: 0; color: "#0d2340" }
-      GradientStop { position: 1; color: "#020612" }
+    id: shell
+    width: 1280; height: 800; visible: true; title: "NEXUS Multimedia"
+    color: Design.Palette.canvas
+    property string page: "Accueil"
+    property string query: ""
+    property int offset: 0
+    property var rows: []
+    property var watching: []
+    property var streams: []
+    property var selected: ({})
+    property string pending: ""
+    property string statusText: ""
+    property string summary: ""
+    property var sample: demoItems
+    property var hero: sample[0]
+    property bool collection: page==="Bibliothèque" || page==="Accueil"
+    property bool showcase: page==="Streaming" || page==="Accueil"
+    property var sections: ["Accueil","Streaming","TV Direct","Replays","Bibliothèque","DLNA","Applications"]
+    function refresh(){rows=station.items(query,offset,false); watching=station.items("",0,true); summary=station.summary()}
+    function openProvider(name){pending=name; consent.open()}
+    onClosing: Qt.quit()
+    Component.onCompleted: refresh()
+    Connections {
+        target: station
+        function onMessage(msg){shell.statusText=msg}
+        function onChanged(){shell.refresh()}
+        function onExternal(away){shell.visible=!away; if(!away) shell.requestActivate()}
     }
-  }
-  Image {
-    id: skyline
-    anchors.fill: parent
-    source: "../../../Assets/Backgrounds/nexus-city.png"
-    fillMode: Image.PreserveAspectCrop
-    opacity: status === Image.Ready ? 0.32 : 0
-    asynchronous: true
-    cache: true
-  }
-  Rectangle { anchors.fill: parent; color: "#9b030b18" }
-
-  Rectangle {
-    id: topbar
-    x: 0; y: 0; width: parent.width; height: 72
-    color: "#e3051224"
-    border.color: "#274f7d"
-    Row {
-      anchors.left: parent.left; anchors.leftMargin: 24
-      anchors.verticalCenter: parent.verticalCenter
-      spacing: 10
-      Text { text:"N3XVS"; font.pixelSize: 31; font.bold:true; color:"#9cddff" }
-      Text { text:"Multimedia"; font.pixelSize:22; color:"white" }
-    }
-    Row {
-      anchors.right: parent.right; anchors.rightMargin: 20
-      anchors.verticalCenter: parent.verticalCenter
-      spacing: 12
-      Repeater {
-        model: ["Paramètres","Utilisateurs","Comptes"]
-        Rectangle {
-          width: label.implicitWidth + 27; height: 35; radius:17
-          color: btn.containsMouse ? "#214f7b" : "#111c33"
-          border.color:"#4a8ebf"
-          Text { id: label; text: modelData; anchors.centerIn: parent; font.pixelSize:12; color:"white" }
-          MouseArea { id: btn; anchors.fill: parent; hoverEnabled:true; onClicked: app.showMessage(modelData + " : module à développer") }
+    Image { anchors.fill: parent; source: cityUrl; fillMode: Image.PreserveAspectCrop; opacity: 0.45 }
+    ColumnLayout {
+        anchors.fill: parent; anchors.margins: width<800?16:28; spacing: 20
+        RowLayout {
+            Layout.fillWidth: true; spacing: 10
+            Label { text: "N E X U S"; color: Design.Palette.ink; font.bold: true; font.pixelSize: 24 }
+            Label { text: " / MEDIA STATION"; color: Design.Palette.accent; visible: shell.width>700; font.pixelSize: 12 }
+            Item { Layout.fillWidth: true }
+            NeonButton { text: "Paramètres"; onClicked: settings.open() }
         }
-      }
-    }
-  }
-
-  Row {
-    x: 16; y: 89; width: parent.width - 30; height: parent.height - 104
-    spacing: 24
-    Rectangle {
-      id: rail
-      width: app.width < 900 ? 65 : 202
-      height: parent.height; radius: 16
-      color: "#ec061426"
-      border.color:"#268cce"; border.width:1
-      Column {
-        anchors.left: parent.left; anchors.right: parent.right; anchors.top:parent.top
-        anchors.margins: 10; spacing: 6
-        Repeater {
-          model: app.menuEntries
-          Rectangle {
-            width: rail.width - 20; height: 48; radius: 10
-            color: app.pageIndex === index ? "#185a8d" : (hover.containsMouse ? "#15314f" : "transparent")
-            border.width: app.pageIndex === index ? 1 : 0
-            border.color: "#65ceff"
-            Text {
-              text: rail.width < 100 ? modelData.charAt(0) : modelData
-              color: "white"
-              anchors.verticalCenter: parent.verticalCenter
-              x: rail.width < 100 ? 18 : 13
-              font.pixelSize: rail.width < 100 ? 18 : 15
-              font.bold: app.pageIndex === index
+        RowLayout {
+            Layout.fillWidth: true; Layout.fillHeight: true; spacing: shell.width<760?14:28
+            ColumnLayout {
+                Layout.alignment: Qt.AlignTop; spacing: 9
+                Repeater {
+                    model: shell.sections
+                    NeonButton { required property string modelData; required property int index
+                        Layout.preferredWidth: shell.width<780?52:148
+                        text: shell.width<780?["⌂","▷","TV","↺","▤","◎","⊞"][index]:modelData
+                        Accessible.name: modelData; selected: shell.page===modelData
+                        onClicked: {shell.page=modelData; shell.statusText=""; scroll.contentItem.contentY=0}
+                    }
+                }
             }
-            MouseArea { id: hover; anchors.fill: parent; hoverEnabled: true; onClicked: app.pageIndex = index }
-          }
-        }
-      }
-    }
-    Flickable {
-      id: scroll
-      width: parent.width - rail.width - parent.spacing
-      height: parent.height
-      contentHeight: contentColumn.implicitHeight + 24
-      clip: true
-      boundsBehavior: Flickable.StopAtBounds
-      ScrollBar.vertical: ScrollBar { policy: ScrollBar.AsNeeded }
-      Column {
-        id: contentColumn
-        width: scroll.width - 8
-        spacing: 22
-        Row {
-          spacing: 12
-          Text { text: app.activePage; color: "white"; font.pixelSize: app.width < 850 ? 24 : 36; font.bold:true }
-          Text { text: "●"; font.pixelSize: 16; color:"#fa385a"; anchors.verticalCenter:parent.verticalCenter }
-        }
-        Text {
-          text: "Version de démonstration · données simulées · aucune intégration DRM"
-          font.pixelSize: 12; color:"#a5cae5"
-        }
-        Rectangle {
-          width: parent.width; height: 104; radius: 14
-          color: "#d20b1e37"; border.color:"#3379ad"
-          Column {
-            x: 18; y: 16; spacing: 9
-            Text { text: app.activePage === "DLNA" ? "Découverte de serveurs à développer" : "Station multimédia modulaire et légère"; color:"white"; font.pixelSize:20; font.bold:true }
-            Text { text: "HDD · USB · DLNA · IPTV · services officiels selon compatibilité"; color:"#add0e7"; font.pixelSize:13 }
-          }
-        }
-        Repeater {
-          model: app.currentSections
-          Column {
-            required property var modelData
-            width: contentColumn.width
-            spacing: 12
-            Text { text: modelData.label; font.pixelSize: 22; font.bold:true; color:"white" }
-            ListView {
-              id: mediaRow
-              width: contentColumn.width; height: 300
-              orientation: ListView.Horizontal
-              spacing: 22
-              clip: true
-              model: modelData.media
-              delegate: MediaTile {
-                mediaTitle: modelData.title
-                category: modelData.genre
-                mediaYear: modelData.year
-                duration: modelData.time
-                status: modelData.status
-                onPlayRequested: function(title) { app.showMessage("Démo : " + title + "\nModule de lecture à intégrer avec VLC.") }
-              }
-              ScrollBar.horizontal: ScrollBar { policy: ScrollBar.AsNeeded }
+            ScrollView {
+                id: scroll; Layout.fillWidth: true; Layout.fillHeight: true; clip: true; contentWidth: availableWidth
+                Column {
+                    width: scroll.availableWidth; spacing: 30
+                    Label { text: shell.page; color: Design.Palette.ink; font.pixelSize: 31; font.bold: true }
+                    Rectangle {
+                        visible: shell.showcase; width: parent.width; height: shell.width<760?160:202; radius: 14; color: Design.Palette.panel; clip: true
+                        Image { anchors.fill: parent; source: shell.hero.art; fillMode: Image.PreserveAspectCrop }
+                        Rectangle { anchors.fill: parent; gradient: Gradient { orientation: Gradient.Horizontal; GradientStop { position: 0; color: "#ed0c182b" } GradientStop { position: 1; color: "#120d1420" } } }
+                        Column { anchors.left: parent.left; anchors.leftMargin: 26; anchors.verticalCenter: parent.verticalCenter; spacing: 8
+                            Label { text: "SÉLECTION  /  DÉMO"; color: Design.Palette.accent; font.bold: true; font.letterSpacing: 2 }
+                            Label { text: shell.hero.title; color: Design.Palette.ink; font.bold: true; font.pixelSize: shell.width<760?28:40 }
+                            Label { text: shell.hero.genre+"   ·   Œuvre fictive"; color: Design.Palette.muted }
+                        }
+                    }
+                    RowCarousel { visible: shell.showcase; width: parent.width; title: "À découvrir"; entries: shell.sample; demo: true; onChosen: item => shell.hero=item }
+                    Column { visible: shell.collection; width: parent.width; spacing: 12
+                        Label { text: shell.summary; color: Design.Palette.muted; width: parent.width; wrapMode: Text.Wrap }
+                        Flow { width: parent.width; spacing: 10
+                            NeonButton { text: "Choisir un dossier"; onClicked: folders.open() }
+                            TextField { width: 180; placeholderText: "Filtrer par titre"; onTextChanged: {shell.query=text; shell.offset=0; shell.refresh()} }
+                        }
+                    }
+                    RowCarousel { visible: shell.collection && shell.watching.length>0; width: parent.width; title: "À reprendre"; entries: shell.watching; onChosen: item=>{shell.selected=item; details.open()} }
+                    RowCarousel { visible: shell.collection && shell.rows.length>0; width: parent.width; title: "Mes médias"; entries: shell.rows; onChosen: item=>{shell.selected=item; details.open()} }
+                    Row { visible: shell.collection && (shell.offset>0 || shell.rows.length===48); spacing: 12
+                        NeonButton { text: "Précédents"; enabled: shell.offset>0; onClicked: {shell.offset-=48; shell.refresh()} }
+                        NeonButton { text: "Suivants"; enabled: shell.rows.length===48; onClicked: {shell.offset+=48; shell.refresh()} }
+                    }
+                    Flow { width: parent.width; spacing: 14; visible: ["TV Direct","Streaming","Replays","Applications"].includes(shell.page)
+                        Repeater { model: shell.page==="TV Direct"?["Free TV"]:shell.page==="Replays"?["france.tv","ARTE","Free TV"]:["Netflix","Disney+","Prime Video","Apple TV","Free TV","france.tv","ARTE"]
+                            NeonButton { required property string modelData; text: modelData; onClicked: shell.openProvider(modelData) }
+                        }
+                    }
+                    NeonButton { visible: shell.page==="TV Direct"; text: "Importer une playlist M3U"; onClicked: playlists.open() }
+                    RowCarousel { visible: shell.page==="TV Direct" && shell.streams.length>0; width: parent.width; title: "Chaînes importées"; entries: shell.streams; onChosen: item=>station.watch(item.path) }
+                    Label { visible: shell.page==="DLNA"; text: "Simulation DLNA · aucun serveur interrogé. Les partages déjà montés peuvent être ajoutés dans Bibliothèque."; width: parent.width; wrapMode: Text.Wrap; color: Design.Palette.muted }
+                }
             }
-          }
         }
-        Rectangle {
-          width: parent.width; height: 76; radius: 12
-          color: "#d0081a32"; border.color: "#375e83"
-          Row {
-            anchors.centerIn:parent
-            spacing: 13
-            Repeater {
-              model: ["Netflix","Disney+","Free TV","Prime Video","Apple TV"]
-              Rectangle {
-                width: Math.max(72, Math.min(120, (contentColumn.width - 80) / 5))
-                height: 37; radius: 13
-                color: linkHover.containsMouse ? "#245c8c" : "#0f2a46"; border.color:"#3ea9e4"
-                Text { text: modelData; color:"white"; font.pixelSize: 11; anchors.centerIn:parent }
-                MouseArea { id:linkHover; anchors.fill:parent; hoverEnabled:true; onClicked: app.openProvider(modelData) }
-              }
-            }
-          }
+        Label { text: shell.statusText; visible: text.length>0; color: Design.Palette.accent; Layout.fillWidth: true; wrapMode: Text.Wrap }
+    }
+    FolderDialog { id: folders; onAccepted: station.index(selectedFolder) }
+    FileDialog { id: playlists; nameFilters: ["Playlists (*.m3u *.m3u8)"]; onAccepted: shell.streams=station.playlist(selectedFile) }
+    Dialog { id: consent; anchors.centerIn: parent; modal: true; title: "Ouvrir "+shell.pending; standardButtons: Dialog.Ok | Dialog.Cancel
+        Label { text: "Ouvrir le site officiel dans une fenêtre privée Firefox ?\nLe service peut demander une connexion et un DRM compatible."; wrapMode: Text.Wrap; width: Math.min(375,shell.width-100) }
+        onAccepted: station.provider(shell.pending)
+    }
+    Dialog { id: settings; anchors.centerIn: parent; modal: true; title: "Paramètres"; standardButtons: Dialog.Close
+        Column { spacing: 12; NeonButton { text: shell.visibility===Window.FullScreen?"Mode fenêtré":"Plein écran"; onClicked: shell.visibility=shell.visibility===Window.FullScreen?Window.Windowed:Window.FullScreen }
+            NeonButton { text: "Actualiser la bibliothèque"; onClicked: {station.rescan(); settings.close()} }
         }
-      }
     }
-  }
-  Dialog {
-    id: messageBox
-    title: "NEXUS — information"
-    property alias text: msg.text
-    modal: true
-    anchors.centerIn: parent
-    standardButtons: Dialog.Ok
-    contentItem: Text {
-      id: msg; text:""; color:"white"; wrapMode: Text.WordWrap; width: 320; padding: 15
+    Dialog { id: details; anchors.centerIn: parent; modal: true; title: shell.selected.title || ""; standardButtons: Dialog.Close
+        Column { spacing: 10
+            Label { text: (shell.selected.codec || "Codec inconnu")+"   ·   "+Math.round((shell.selected.duration||0)/60)+" min" }
+            NeonButton { text: "Lire avec VLC"; onClicked: {details.close(); station.watch(shell.selected.path)} }
+            SpinBox { id: minute; from: 0; to: Math.ceil((shell.selected.duration||0)/60); value: Math.floor((shell.selected.position||0)/60) }
+            NeonButton { text: "Mémoriser la minute"; onClicked: {station.bookmark(shell.selected.path,minute.value*60,false); details.close()} }
+            NeonButton { text: "Marquer comme vu"; onClicked: {station.bookmark(shell.selected.path,0,true); details.close()} }
+        }
     }
-    background: Rectangle { radius: 12; color:"#0a1a2c"; border.color:"#60bdf5" }
-  }
 }
