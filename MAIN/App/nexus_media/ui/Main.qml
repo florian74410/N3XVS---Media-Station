@@ -1,246 +1,144 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
+import QtQuick.Dialogs
 import "components"
-
+import "pages"
+import "theme" as Design
 ApplicationWindow {
-  id: app
-  visible: true
-  width: 1366; height: 768
-  minimumWidth: 630; minimumHeight: 420
-  title: "N3XVS Multimedia — prototype 0.0.1"
-  color: "#050b15"
-  property int pageIndex: 0
-  property var menuEntries: ["Accueil", "Netflix", "Disney+", "Free TV", "TV", "Replays", "Bibliothèque", "DLNA", "Applications"]
-  property var platforms: ({
-    "Netflix": "https://www.netflix.com/",
-    "Disney+": "https://www.disneyplus.com/",
-    "Free TV": "https://tv.free.fr/",
-    "Prime Video": "https://www.primevideo.com/",
-    "Apple TV": "https://tv.apple.com/fr/"
-  })
-  property string activePage: menuEntries[pageIndex]
-  property var demoSets: ({
-    "Accueil": [
-      { label:"Continuer le visionnage", media:[
-        {title:"Série de démonstration", genre:"Série", year:"2026", time:"42 min", status:"En cours"},
-        {title:"Documentaire de démonstration", genre:"Documentaire", year:"2025", time:"58 min", status:"Déjà vu"},
-        {title:"Film de démonstration", genre:"Film", year:"2024", time:"1 h 45", status:"Jamais vu"}
-      ]},
-      { label:"Science-fiction", media:[
-        {title:"Voyage orbital", genre:"Science-fiction", year:"2025", time:"2 h 07", status:"Jamais vu"},
-        {title:"Ville néon", genre:"Science-fiction", year:"2026", time:"1 h 35", status:"En cours"},
-        {title:"Archives spatiales", genre:"Science-fiction", year:"2024", time:"1 h 50", status:"Déjà vu"}
-      ]}
-    ],
-    "Netflix": [{label:"Catalogue illustratif — non connecté",media:[
-      {title:"Exemple série",genre:"Série",year:"2026",time:"48 min",status:"En cours"},
-      {title:"Exemple film",genre:"Film",year:"2025",time:"1 h 54",status:"Jamais vu"}
-    ]}],
-    "Disney+": [{label:"Catalogue illustratif — non connecté",media:[
-      {title:"Exemple animation",genre:"Animation",year:"2025",time:"1 h 38",status:"Jamais vu"}
-    ]}],
-    "Free TV": [{label:"TV et replay — démonstration",media:[
-      {title:"Chaîne exemple",genre:"Télévision",year:"2026",time:"Direct",status:"Jamais vu"}
-    ]}],
-    "TV": [{label:"Chaînes Freebox — démonstration",media:[
-      {title:"France 2 (exemple)",genre:"RTSP / IPTV",year:"Direct",time:"HD",status:"Jamais vu"},
-      {title:"Arte (exemple)",genre:"RTSP / IPTV",year:"Direct",time:"HD",status:"Jamais vu"}
-    ]}],
-    "Replays": [{label:"Programmes en replay — démonstration",media:[
-      {title:"Replay exemple",genre:"Replay",year:"2026",time:"52 min",status:"Jamais vu"}
-    ]}],
-    "Bibliothèque": [
-      {label:"Films locaux — démonstration", media:[
-        {title:"Film sur HDD",genre:"Stockage USB",year:"2025",time:"1 h 47",status:"Jamais vu"},
-        {title:"Film sur NAS",genre:"SMB / NFS",year:"2024",time:"2 h 12",status:"En cours"}
-      ]},
-      {label:"Séries locales — démonstration",media:[
-        {title:"Série personnelle",genre:"Bibliothèque",year:"2025",time:"51 min",status:"Déjà vu"}
-      ]}
-    ],
-    "DLNA": [{label:"Serveurs réseau — simulation, pas de scan réel",media:[
-      {title:"NAS-Cinema",genre:"Serveur DLNA",year:"Local",time:"—",status:"Jamais vu"},
-      {title:"Freebox Media",genre:"Serveur DLNA",year:"Local",time:"—",status:"Jamais vu"}
-    ]}],
-    "Applications": [{label:"Services officiels — raccourcis", media:[
-      {title:"Prime Video",genre:"Lanceur Web",year:"—",time:"—",status:"Jamais vu"},
-      {title:"Apple TV",genre:"Lanceur Web",year:"—",time:"—",status:"Jamais vu"}
-    ]}]
-  })
-  property var currentSections: demoSets[activePage] || demoSets["Accueil"]
-  function showMessage(t) { messageBox.text = t; messageBox.open(); }
-  function openProvider(name) {
-    var url = platforms[name]
-    if (!url) { showMessage("Aucun lanceur officiel configuré pour " + name); return; }
-    Qt.openUrlExternally(url)
-  }
-  Rectangle {
-    anchors.fill: parent
-    gradient: Gradient {
-      GradientStop { position: 0; color: "#0d2340" }
-      GradientStop { position: 1; color: "#020612" }
+    id: shell
+    width: 1280; height: 800; visible: true; title: "NEXUS Multimedia"
+    color: Design.Palette.canvas
+    property string page: "Bibliothèque"
+    property string query: ""
+    property int offset: 0
+    property var rows: []
+    property var watching: []
+    property var dlnaServer: ({})
+    property var dlnaTrail: ["0"]
+    property var dlnaMedia: []
+    property int dlnaOffset: 0
+    function browseDlna(){discovering=true; station.browse(dlnaServer,dlnaTrail[dlnaTrail.length-1],dlnaOffset)}
+    property var servers: []
+    property bool discovering: false
+    property var streams: []
+    property var selected: ({})
+    property string pending: ""
+    property bool playerActive: false
+    property string statusText: ""
+    property string summary: ""
+    property var sample: demoItems
+    property var hero: sample[0]
+    property bool collection: page==="Bibliothèque" || page==="Accueil"
+    property bool showcase: ["Netflix","Disney+","Streaming"].includes(page)
+    readonly property string providerName:page==="Disney+"?"Disney+":"Netflix"
+    property int totalMedia:0
+    property bool lanChecked:false
+    property var listed:[]
+    property string listHeading:""
+    property var sections: ["Accueil","Netflix","Disney+","TV","Replays","Bibliothèque","DLNA","Applications"]
+    function inspect(entry){if(entry.demo){selected=entry;demoDetail.open()}else showDetails(entry)}
+    function listTitles(name,items){listHeading=name;listed=items;allTitles.open()}
+    function navigate(name){page=name;statusText="";scroll.contentItem.contentY=0}
+    function scanLan(){navigate("DLNA");discovering=true;station.discover()}
+    function chooseFolder(){folders.open()}
+    function choosePlaylist(){playlists.open()}
+    function showDetails(item){selected=item; details.open()}
+    function refresh(){totalMedia=station.mediaCount(); rows=station.items(query,offset,false); watching=station.items("",0,true); summary=station.summary()}
+    function openProvider(name){pending=name; consent.open()}
+    onClosing: Qt.quit()
+    Component.onCompleted: refresh()
+    Connections {
+        target: station
+        function onMessage(msg){shell.statusText=msg}
+        function onBrowsed(entries){shell.dlnaMedia=entries; shell.discovering=false}
+        function onDiscovered(devices){shell.lanChecked=true; shell.servers=devices; shell.discovering=false}
+        function onChanged(){shell.refresh()}
+        function onControls(active){shell.playerActive=active}
+        function onExternal(away){shell.visible=!away; if(!away) shell.requestActivate()}
     }
-  }
-  Image {
-    id: skyline
-    anchors.fill: parent
-    source: "../../../Assets/Backgrounds/nexus-city.png"
-    fillMode: Image.PreserveAspectCrop
-    opacity: status === Image.Ready ? 0.32 : 0
-    asynchronous: true
-    cache: true
-  }
-  Rectangle { anchors.fill: parent; color: "#9b030b18" }
-
-  Rectangle {
-    id: topbar
-    x: 0; y: 0; width: parent.width; height: 72
-    color: "#e3051224"
-    border.color: "#274f7d"
-    Row {
-      anchors.left: parent.left; anchors.leftMargin: 24
-      anchors.verticalCenter: parent.verticalCenter
-      spacing: 10
-      Text { text:"N3XVS"; font.pixelSize: 31; font.bold:true; color:"#9cddff" }
-      Text { text:"Multimedia"; font.pixelSize:22; color:"white" }
+    Item {anchors.fill:parent;clip:true
+        Image {width:parent.width;height:parent.height*1.42;y:-parent.height*.02;source:cityUrl;fillMode:Image.PreserveAspectCrop}
+        Rectangle {anchors.fill:parent; gradient:Gradient {GradientStop{position:0;color:"#09031220"} GradientStop{position:.5;color:"#80010b16"} GradientStop{position:1;color:"#27030d18"}}}
     }
-    Row {
-      anchors.right: parent.right; anchors.rightMargin: 20
-      anchors.verticalCenter: parent.verticalCenter
-      spacing: 12
-      Repeater {
-        model: ["Paramètres","Utilisateurs","Comptes"]
-        Rectangle {
-          width: label.implicitWidth + 27; height: 35; radius:17
-          color: btn.containsMouse ? "#214f7b" : "#111c33"
-          border.color:"#4a8ebf"
-          Text { id: label; text: modelData; anchors.centerIn: parent; font.pixelSize:12; color:"white" }
-          MouseArea { id: btn; anchors.fill: parent; hoverEnabled:true; onClicked: app.showMessage(modelData + " : module à développer") }
-        }
-      }
-    }
-  }
-
-  Row {
-    x: 16; y: 89; width: parent.width - 30; height: parent.height - 104
-    spacing: 24
-    Rectangle {
-      id: rail
-      width: app.width < 900 ? 65 : 202
-      height: parent.height; radius: 16
-      color: "#ec061426"
-      border.color:"#268cce"; border.width:1
-      Column {
-        anchors.left: parent.left; anchors.right: parent.right; anchors.top:parent.top
-        anchors.margins: 10; spacing: 6
-        Repeater {
-          model: app.menuEntries
-          Rectangle {
-            width: rail.width - 20; height: 48; radius: 10
-            color: app.pageIndex === index ? "#185a8d" : (hover.containsMouse ? "#15314f" : "transparent")
-            border.width: app.pageIndex === index ? 1 : 0
-            border.color: "#65ceff"
-            Text {
-              text: rail.width < 100 ? modelData.charAt(0) : modelData
-              color: "white"
-              anchors.verticalCenter: parent.verticalCenter
-              x: rail.width < 100 ? 18 : 13
-              font.pixelSize: rail.width < 100 ? 18 : 15
-              font.bold: app.pageIndex === index
+    Item {
+        id:stage
+        readonly property real factor:Math.min(1.6,Math.max(.83,shell.width/1672))
+        readonly property bool narrow:width<980
+        width:shell.width/factor; height:shell.height/factor; scale:factor; transformOrigin:Item.TopLeft
+        Image {width:parent.width;height:185;source:skinUrl+"skyline.png"; opacity:.94}
+        Rectangle {anchors.fill:parent;color:"#22000b19"}
+        TopBar {id:top;width:parent.width;height:55;compact:stage.narrow
+            onSettingsRequested:settings.open();onUsersRequested:users.open();onAccountsRequested:accounts.open()}
+        SideBar {id:side;hub:shell;x:16;y:shell.showcase?96:104;width:stage.narrow?61:stage.width*(shell.showcase?.13:.136);compact:stage.narrow
+            onNavigate:name=>shell.navigate(name)}
+        ScrollView {
+            id:scroll;x:side.x+side.width+(shell.showcase?19:25);y:top.height+3;width:stage.width-x-19;height:stage.height-y-10
+            contentWidth:availableWidth;clip:true;ScrollBar.horizontal.policy:ScrollBar.AlwaysOff
+            Column {width:scroll.availableWidth;spacing:6
+                Row {height:shell.showcase?68:101;spacing:16
+                    Image {anchors.verticalCenter:parent.verticalCenter;width:55;height:51;source:skinUrl+"nav-"+(shell.showcase?"netflix":shell.collection?"library":shell.page==="DLNA"?"dlna":shell.page==="TV"?"tv":"apps")+".png"}
+                    Column {anchors.verticalCenter:parent.verticalCenter;spacing:3
+                        Text {text:shell.showcase?"Catalogue streaming":shell.page==="Accueil"?"Bibliothèque":shell.page;font.bold:true;color:"white";font.pixelSize:shell.showcase?38:42}
+                        Text {width:Math.max(180,scroll.availableWidth-85);elide:Text.ElideRight;color:"#e5f5ff";font.pixelSize:17
+                            text:shell.showcase?"Catalogue de démonstration · Ouvrir "+shell.providerName+" via son site officiel.":shell.collection?"Vos contenus locaux et réseau, films, séries et médias"+(shell.totalMedia===0?"   ·   Démonstration":""):"Sources multimédia et services de votre station"}
+                    }
+                }
+                Streaming {width:parent.width;hub:shell;visible:shell.showcase}
+                Library {width:parent.width;hub:shell;visible:shell.collection}
+                Apps {width:parent.width;hub:shell;visible:shell.page==="Applications"}
+                Replays {width:parent.width;hub:shell;visible:shell.page==="Replays"}
+                TV {width:parent.width;hub:shell;visible:shell.page==="TV" || shell.page==="TV Direct"}
+                DLNA {width:parent.width;hub:shell;visible:shell.page==="DLNA"}
+                Row {visible:shell.playerActive;spacing:10
+                    NeonButton {text:"Pause / Reprendre";onClicked:station.pause()}
+                    NeonButton {text:"Arrêter la lecture";onClicked:station.stopLocal()}}
             }
-            MouseArea { id: hover; anchors.fill: parent; hoverEnabled: true; onClicked: app.pageIndex = index }
-          }
         }
-      }
     }
-    Flickable {
-      id: scroll
-      width: parent.width - rail.width - parent.spacing
-      height: parent.height
-      contentHeight: contentColumn.implicitHeight + 24
-      clip: true
-      boundsBehavior: Flickable.StopAtBounds
-      ScrollBar.vertical: ScrollBar { policy: ScrollBar.AsNeeded }
-      Column {
-        id: contentColumn
-        width: scroll.width - 8
-        spacing: 22
-        Row {
-          spacing: 12
-          Text { text: app.activePage; color: "white"; font.pixelSize: app.width < 850 ? 24 : 36; font.bold:true }
-          Text { text: "●"; font.pixelSize: 16; color:"#fa385a"; anchors.verticalCenter:parent.verticalCenter }
-        }
-        Text {
-          text: "Version de démonstration · données simulées · aucune intégration DRM"
-          font.pixelSize: 12; color:"#a5cae5"
-        }
-        Rectangle {
-          width: parent.width; height: 104; radius: 14
-          color: "#d20b1e37"; border.color:"#3379ad"
-          Column {
-            x: 18; y: 16; spacing: 9
-            Text { text: app.activePage === "DLNA" ? "Découverte de serveurs à développer" : "Station multimédia modulaire et légère"; color:"white"; font.pixelSize:20; font.bold:true }
-            Text { text: "HDD · USB · DLNA · IPTV · services officiels selon compatibilité"; color:"#add0e7"; font.pixelSize:13 }
-          }
-        }
-        Repeater {
-          model: app.currentSections
-          Column {
-            required property var modelData
-            width: contentColumn.width
-            spacing: 12
-            Text { text: modelData.label; font.pixelSize: 22; font.bold:true; color:"white" }
-            ListView {
-              id: mediaRow
-              width: contentColumn.width; height: 300
-              orientation: ListView.Horizontal
-              spacing: 22
-              clip: true
-              model: modelData.media
-              delegate: MediaTile {
-                mediaTitle: modelData.title
-                category: modelData.genre
-                mediaYear: modelData.year
-                duration: modelData.time
-                status: modelData.status
-                onPlayRequested: function(title) { app.showMessage("Démo : " + title + "\nModule de lecture à intégrer avec VLC.") }
-              }
-              ScrollBar.horizontal: ScrollBar { policy: ScrollBar.AsNeeded }
-            }
-          }
-        }
-        Rectangle {
-          width: parent.width; height: 76; radius: 12
-          color: "#d0081a32"; border.color: "#375e83"
-          Row {
-            anchors.centerIn:parent
-            spacing: 13
-            Repeater {
-              model: ["Netflix","Disney+","Free TV","Prime Video","Apple TV"]
-              Rectangle {
-                width: Math.max(72, Math.min(120, (contentColumn.width - 80) / 5))
-                height: 37; radius: 13
-                color: linkHover.containsMouse ? "#245c8c" : "#0f2a46"; border.color:"#3ea9e4"
-                Text { text: modelData; color:"white"; font.pixelSize: 11; anchors.centerIn:parent }
-                MouseArea { id:linkHover; anchors.fill:parent; hoverEnabled:true; onClicked: app.openProvider(modelData) }
-              }
-            }
-          }
-        }
-      }
+    Rectangle {visible:shell.statusText.length>0;anchors.bottom:parent.bottom;anchors.horizontalCenter:parent.horizontalCenter;color:"#ef041526";radius:9;border.color:"#68bbec";width:Math.min(parent.width-24,notice.implicitWidth+32);height:40
+        Text {id:notice;anchors.centerIn:parent;text:shell.statusText;color:"white";textFormat:Text.PlainText}
+        Timer {interval:4500;running:parent.visible;onTriggered:shell.statusText=""}
     }
-  }
-  Dialog {
-    id: messageBox
-    title: "NEXUS — information"
-    property alias text: msg.text
-    modal: true
-    anchors.centerIn: parent
-    standardButtons: Dialog.Ok
-    contentItem: Text {
-      id: msg; text:""; color:"white"; wrapMode: Text.WordWrap; width: 320; padding: 15
+    Modal {id:demoDetail;title:shell.selected.title||"Fiche";Column{spacing:12
+        Image {source:shell.selected.art||"";width:160;height:160;fillMode:Image.PreserveAspectFit}
+        Label {text:(shell.selected.info||"")+"    ★ "+(shell.selected.score||"")}
+        Label {text:"Démonstration · disponibilité non vérifiée"}
+        NeonButton {visible:shell.showcase;text:"Ouvrir "+shell.providerName;onClicked:{demoDetail.close();shell.openProvider(shell.providerName)}}}}
+    Modal {id:allTitles;title:shell.listHeading;width:Math.min(shell.width-32,450)
+        ListView {implicitHeight:Math.min(350,48*shell.listed.length);clip:true;model:shell.listed
+            delegate:ItemDelegate{required property var modelData;width:ListView.view.width;text:modelData.title;onClicked:{allTitles.close();shell.inspect(modelData)}}}}
+    FolderDialog { id: folders; onAccepted: station.index(selectedFolder) }
+    FileDialog { id: playlists; nameFilters: ["Playlists (*.m3u *.m3u8)"]; onAccepted: shell.streams=station.playlist(selectedFile) }
+    Modal { id: consent; title: "Ouvrir "+shell.pending; standardButtons: Dialog.Ok | Dialog.Cancel
+        Label { text: "Ouvrir le site officiel dans une fenêtre privée Firefox ?\nLe service peut demander une connexion et un DRM compatible."; wrapMode: Text.Wrap; width: Math.min(375,shell.width-100) }
+        onAccepted: station.provider(shell.pending)
     }
-    background: Rectangle { radius: 12; color:"#0a1a2c"; border.color:"#60bdf5" }
-  }
+    Modal {id:users; title:"Utilisateur local"
+        Label {text:loginName+" · profil de cette session Linux"}
+    }
+    Modal {id:accounts; title:"Comptes de streaming"
+        Column {spacing:10
+            Label {width:280;wrapMode:Text.Wrap;text:"La connexion se fait sur le site officiel dans la fenêtre privée du service."}
+            NeonButton {text:"Choisir une plateforme";onClicked:{accounts.close();shell.page="Applications"}}
+        }
+    }
+    Modal { id: settings; title: "Paramètres"; standardButtons: Dialog.Close
+        Column { spacing: 12; NeonButton { text: shell.visibility===Window.FullScreen?"Mode fenêtré":"Plein écran"; onClicked: shell.visibility=shell.visibility===Window.FullScreen?Window.Windowed:Window.FullScreen }
+            NeonButton { visible:shell.width<780; text:"Utilisateur local"; onClicked:{settings.close();users.open()} }
+            NeonButton { visible:shell.width<780; text:"Comptes de streaming"; onClicked:{settings.close();accounts.open()} }
+            NeonButton { text: "Actualiser la bibliothèque"; onClicked: {station.rescan(); settings.close()} }
+        }
+    }
+    Modal { id: details; title: shell.selected.title || ""; standardButtons: Dialog.Close
+        Column { spacing: 10
+            Label { text: (shell.selected.codec || "Codec inconnu")+"   ·   "+Math.round((shell.selected.duration||0)/60)+" min" }
+            Label { text: "Année "+(shell.selected.year || "inconnue")+"   ·   Note non renseignée" }
+            NeonButton { text: shell.selected.watchlist?"Retirer de À regarder":"Ajouter à À regarder"; onClicked:{station.toggleWatchlist(shell.selected.path); details.close()} }
+            NeonButton { text: "Lire avec VLC"; onClicked: {details.close(); station.watch(shell.selected.path)} }
+            SpinBox { id: minute; from: 0; to: Math.ceil((shell.selected.duration||0)/60); value: Math.floor((shell.selected.position||0)/60) }
+            NeonButton { text: "Mémoriser la minute"; onClicked: {station.bookmark(shell.selected.path,minute.value*60,false); details.close()} }
+            NeonButton { text: "Marquer comme vu"; onClicked: {station.bookmark(shell.selected.path,0,true); details.close()} }
+        }
+    }
 }

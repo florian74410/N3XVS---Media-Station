@@ -1,0 +1,3 @@
+ffmpeg
+gstreamer1.0-tools
+gupnp-tools

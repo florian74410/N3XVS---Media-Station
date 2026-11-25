@@ -1,54 +1,33 @@
 #!/usr/bin/env bash
 set -euo pipefail
-ROOT="$(cd "$(dirname "$0")" && pwd)"
+ROOT=$(cd "$(dirname "$0")" && pwd)
 PY="$ROOT/MAIN/App/nexus_media/main.py"
-STATE="$HOME/.local/state/n3xvs-media"
-PIDFILE="$STATE/nexus.pid"
-LOG="$STATE/nexus.log"
-MODE="${1:-run}"
+STATE="${XDG_STATE_HOME:-$HOME/.local/state}/n3xvs-media"
+umask 077
 mkdir -p "$STATE"
-check_network() {
-  if command -v ip >/dev/null && ip route show default 2>/dev/null | grep -q default; then
-    echo "[INFO] Route réseau par défaut détectée"
-  else
-    echo "[INFO] Pas de route réseau par défaut, bibliothèque locale disponible"
-  fi
-}
+python=${NEXUS_PYTHON:-python3}
+[[ ! -x "$ROOT/.venv/bin/python" || -n "${NEXUS_PYTHON:-}" ]] || python="$ROOT/.venv/bin/python"
 running() {
-  [[ -f "$PIDFILE" ]] || return 1
   local p
-  p="$(cat "$PIDFILE")"
-  [[ "$p" =~ ^[0-9]+$ ]] || return 1
-  kill -0 "$p" 2>/dev/null || return 1
-  [[ -r "/proc/$p/cmdline" ]] || return 1
-  tr '\0' ' ' < "/proc/$p/cmdline" | grep -Fq "$PY"
+  read -r p < "$STATE/nexus.pid" || [[ -n "${p:-}" ]] || return 1
+  [[ "$p" =~ ^[1-9][0-9]*$ && -r "/proc/$p/cmdline" ]] && grep -Fzxq -- "$PY" "/proc/$p/cmdline"
 }
-case "$MODE" in
-  --status)
-    if running; then echo "[OK] NEXUS en cours (PID $(cat "$PIDFILE"))"; else echo "[INFO] NEXUS arrêté"; fi
-    exit 0;;
-  --restart)
-    "$ROOT/stop.sh"
-    MODE=run;;
-  --daemon)
-    running && { echo "[INFO] Déjà en cours"; exit 0; }
-    check_network
-    command -v python3 >/dev/null || { echo "python3 absent" >&2; exit 1; }
-    nohup python3 "$PY" >> "$LOG" 2>&1 < /dev/null &
-    echo "$!" > "$PIDFILE"
-    echo "[OK] Démarré en arrière-plan (PID $!)"
-    exit 0;;
-  run|"") ;;
-  *) echo "Usage: $0 [run|--daemon|--restart|--status]" >&2; exit 2;;
+case "${1:-start}" in
+  --status) if [[ -s "$STATE/nexus.pid" ]] && running; then echo 'NEXUS actif'; else echo 'NEXUS arrêté'; fi; exit;;
+  --diagnose) "$python" -c 'import platform,PySide6;print(platform.platform(), PySide6.__version__)'; command -v ffprobe vlc firefox || true; exit;;
+  --restart) "$ROOT/stop.sh"; exec "$0" --daemon;;
+  --daemon|run|start) ;;
+  *) exit 2;;
 esac
-running && { echo "[INFO] Déjà en cours"; exit 0; }
-check_network
-python3 "$PY" &
-CHILD=$!
-echo "$CHILD" > "$PIDFILE"
-cleanup() {
-  if kill -0 "$CHILD" 2>/dev/null; then kill "$CHILD" 2>/dev/null || true; fi
-  [[ -f "$PIDFILE" ]] && [[ "$(cat "$PIDFILE")" == "$CHILD" ]] && rm -f "$PIDFILE"
-}
-trap cleanup EXIT INT TERM
-wait "$CHILD"
+[[ ! -s "$STATE/nexus.pid" ]] || ! running || { echo "NEXUS déjà actif"; exit 0; }
+if command -v ip >/dev/null && ip route show default | grep -q default; then echo 'Route réseau présente'; else echo 'Mode local disponible'; fi
+if [[ "${1:-}" == --daemon ]]; then
+  nohup "$python" "$PY" >>"$STATE/nexus.log" 2>&1 </dev/null &
+  for ((i=0;i<80;i++)); do
+    if [[ -s "$STATE/nexus.pid" ]] && running; then echo 'NEXUS actif'; exit 0; fi
+    sleep .1
+  done
+  echo "Démarrage en échec, consulter $STATE/nexus.log" >&2
+  exit 1
+fi
+exec "$python" "$PY"

@@ -1,0 +1,1936 @@
+{
+  "release": "trixie",
+  "architecture": "arm64",
+  "packages": [
+    {
+      "package": "debconf",
+      "version": "1.5.91",
+      "architecture": "all",
+      "source": "debconf",
+      "depends": "",
+      "pre_depends": "",
+      "sha256": "1ddc7e6c5925f748eefb7ca811d98e049f18c158bb21fbc7e122262ce6011e49",
+      "license_notice": "licenses/debconf.txt"
+    },
+    {
+      "package": "dpkg",
+      "version": "1.22.22",
+      "architecture": "arm64",
+      "source": "dpkg",
+      "depends": "tar (>= 1.28-1)",
+      "pre_depends": "libbz2-1.0, libc6 (>= 2.38), liblzma5 (>= 5.4.0), libmd0 (>= 0.0.0), libselinux1 (>= 3.1~), libzstd1 (>= 1.5.5), zlib1g (>= 1:1.1.4)",
+      "sha256": "1142468e57f69e13d174f517dff739508c61ee97d81c182c120cd6b281d8cdfa",
+      "license_notice": "licenses/dpkg.txt"
+    },
+    {
+      "package": "fontconfig-config",
+      "version": "2.15.0-2.3",
+      "architecture": "arm64",
+      "source": "fontconfig",
+      "depends": "debconf (>= 0.5) ",
+      "pre_depends": " debconf-2.0, fonts-dejavu-core ",
+      "sha256": "10f643f467b51cf25fc18d1945bc61246dd8d8d1fe6bc712a2b1712c74ebc4d6",
+      "license_notice": "licenses/fontconfig-config.txt"
+    },
+    {
+      "package": "fontconfig",
+      "version": "2.15.0-2.3",
+      "architecture": "arm64",
+      "source": "fontconfig",
+      "depends": "libc6 (>= 2.38), libfontconfig1 (>= 2.13.0), libfreetype6 (>= 2.2.1), fontconfig-config",
+      "pre_depends": "",
+      "sha256": "f899e800435bc3bd3ecc6139bfcb2b45b3dbd2ffa59c4b9b3cc246e9661052af",
+      "license_notice": "licenses/fontconfig.txt"
+    },
+    {
+      "package": "fonts-dejavu-core",
+      "version": "2.37-8",
+      "architecture": "all",
+      "source": "fonts-dejavu",
+      "depends": "fonts-dejavu-mono",
+      "pre_depends": "",
+      "sha256": "86635b3d25b3655fc11cb3ecc3af59f0bf19643b02b94f2de48bd10253cdba12",
+      "license_notice": "licenses/fonts-dejavu-core.txt"
+    },
+    {
+      "package": "fonts-dejavu-mono",
+      "version": "2.37-8",
+      "architecture": "all",
+      "source": "fonts-dejavu",
+      "depends": "",
+      "pre_depends": "",
+      "sha256": "3003e98a5debfdeadc7040a7f715fe9fe6fb67f68deacf6049b54e30f07fc014",
+      "license_notice": "licenses/fonts-dejavu-mono.txt"
+    },
+    {
+      "package": "gcc-14-base",
+      "version": "14.2.0-19",
+      "architecture": "arm64",
+      "source": "gcc-14",
+      "depends": "",
+      "pre_depends": "",
+      "sha256": "34ee90679b018c0e64234747a4c4c0ae6b7f63541115037465a8627c2dfbc594",
+      "license_notice": "licenses/gcc-14-base.txt"
+    },
+    {
+      "package": "libacl1",
+      "version": "2.3.2-2+b1",
+      "architecture": "arm64",
+      "source": "acl",
+      "depends": "libc6 (>= 2.38)",
+      "pre_depends": "",
+      "sha256": "10b2399169e42e6d8db55944116cb2ed61caab997cf700acb83de0b0668e5721",
+      "license_notice": "licenses/libacl1.txt"
+    },
+    {
+      "package": "libatomic1",
+      "version": "14.2.0-19",
+      "architecture": "arm64",
+      "source": "gcc-14",
+      "depends": "gcc-14-base (= 14.2.0-19), libc6 (>= 2.17)",
+      "pre_depends": "",
+      "sha256": "7ccff90234484bf21ae5ecb79d25b6a84b2f4038f65dd139085b2e3a937cd8dc",
+      "license_notice": "voir copyright partag\u00e9 du paquet source gcc-14"
+    },
+    {
+      "package": "libb2-1",
+      "version": "0.98.1-1.1+b2",
+      "architecture": "arm64",
+      "source": "libb2",
+      "depends": "libc6 (>= 2.25), libgomp1 (>= 4.9)",
+      "pre_depends": "",
+      "sha256": "e6255eb2e49677fb7d127b2b48baa7850adb950cd08b415d57e90a37bca6360e",
+      "license_notice": "licenses/libb2-1.txt"
+    },
+    {
+      "package": "libblkid1",
+      "version": "2.41.5-0+deb13u1",
+      "architecture": "arm64",
+      "source": "util-linux",
+      "depends": "libc6 (>= 2.38)",
+      "pre_depends": "",
+      "sha256": "d7d122b4c7a0a8ae6135a1687c9c4ce80a88f9e498c01998f634dd32caab9016",
+      "license_notice": "licenses/libblkid1.txt"
+    },
+    {
+      "package": "libbrotli1",
+      "version": "1.1.0-2+deb13u1",
+      "architecture": "arm64",
+      "source": "brotli",
+      "depends": "libc6 (>= 2.29)",
+      "pre_depends": "",
+      "sha256": "a8caceeddd3a407888234ef488e0a773299e05fac703c8695166a0a9bc86587f",
+      "license_notice": "licenses/libbrotli1.txt"
+    },
+    {
+      "package": "libbsd0",
+      "version": "0.12.2-2",
+      "architecture": "arm64",
+      "source": "libbsd",
+      "depends": "libc6 (>= 2.38), libmd0 (>= 1.0.3-2)",
+      "pre_depends": "",
+      "sha256": "6827c1b3ad8dcbf3478803f9150359433e3376a3bde01c4503888a22eb3924e3",
+      "license_notice": "licenses/libbsd0.txt"
+    },
+    {
+      "package": "libbz2-1.0",
+      "version": "1.0.8-6",
+      "architecture": "arm64",
+      "source": "bzip2",
+      "depends": "libc6 (>= 2.17)",
+      "pre_depends": "",
+      "sha256": "3537fe4fc577a60c8a9568873cd577db7ebc135eb8bb1825f18caf8972d9d2f2",
+      "license_notice": "licenses/libbz2-1.0.txt"
+    },
+    {
+      "package": "libc6",
+      "version": "2.41-12+deb13u5",
+      "architecture": "arm64",
+      "source": "glibc",
+      "depends": "libgcc-s1",
+      "pre_depends": "",
+      "sha256": "0966fc3da1a26cc57647c68b5736f791b6e7eb498173a7993f63b6c89b4ed4f5",
+      "license_notice": "licenses/libc6.txt"
+    },
+    {
+      "package": "libcap2",
+      "version": "1:2.75-10+deb13u1+b3",
+      "architecture": "arm64",
+      "source": "libcap2",
+      "depends": "libc6 (>= 2.38)",
+      "pre_depends": "",
+      "sha256": "863aa5b9cdf6f80010b48982d4639126b09a89eeef2c0c5c7be226297c811581",
+      "license_notice": "licenses/libcap2.txt"
+    },
+    {
+      "package": "libclang1-19",
+      "version": "1:19.1.7-3+b1",
+      "architecture": "arm64",
+      "source": "llvm-toolchain-19",
+      "depends": "libc6 (>= 2.38), libgcc-s1 (>= 3.0), libllvm19 (>= 1:19.1.0), libstdc++6 (>= 11)",
+      "pre_depends": "",
+      "sha256": "e0719cbb2bd6bb3b91f471d1fa41b364eae0604774db56a7b3dd8d24738a5f20",
+      "license_notice": "licenses/libclang1-19.txt"
+    },
+    {
+      "package": "libcom-err2",
+      "version": "1.47.2-3+b12",
+      "architecture": "arm64",
+      "source": "e2fsprogs",
+      "depends": "libc6 (>= 2.38)",
+      "pre_depends": "",
+      "sha256": "1acba7e14a17a3f4b8008454e1a75840a5cdff4259d3c1d369092d82089ea0d8",
+      "license_notice": "licenses/libcom-err2.txt"
+    },
+    {
+      "package": "libcurl3t64-gnutls",
+      "version": "8.14.1-2+deb13u7",
+      "architecture": "arm64",
+      "source": "curl",
+      "depends": "libbrotli1 (>= 0.6.0), libc6 (>= 2.38), libgnutls30t64 (>= 3.8.6), libgssapi-krb5-2 (>= 1.17), libidn2-0 (>= 2.0.0), libldap2 (>= 2.6.2), libnettle8t64, libnghttp2-14 (>= 1.50.0), libnghttp3-9 (>= 0.15.0), libngtcp2-16 (>= 1.1.0), libngtcp2-crypto-gnutls8 (>= 1.1.0), libpsl5t64 (>= 0.16.0), librtmp1 (>= 2.3), libssh2-1t64 (>= 1.11.1), libzstd1 (>= 1.5.5), zlib1g (>= 1:1.2.3.4)",
+      "pre_depends": "",
+      "sha256": "313b1cc327ea0233b15e601f267c13a4922839fed8758eb0283553d335e4a0aa",
+      "license_notice": "licenses/libcurl3t64-gnutls.txt"
+    },
+    {
+      "package": "libdb5.3t64",
+      "version": "5.3.28+dfsg2-9",
+      "architecture": "arm64",
+      "source": "db5.3",
+      "depends": "libc6 (>= 2.38)",
+      "pre_depends": "",
+      "sha256": "bfef56508d69fd3f940668f6abd0a466a362cabf63c4cc1c787cc58d28f6e92f",
+      "license_notice": "licenses/libdb5.3t64.txt"
+    },
+    {
+      "package": "libdbus-1-3",
+      "version": "1.16.2-2",
+      "architecture": "arm64",
+      "source": "dbus",
+      "depends": "libc6 (>= 2.38), libsystemd0",
+      "pre_depends": "",
+      "sha256": "ca6bb5f2047ad58d274cb7d14216035a07d8e5aae6f6a0122c4f6293c9c39515",
+      "license_notice": "licenses/libdbus-1-3.txt"
+    },
+    {
+      "package": "libdouble-conversion3",
+      "version": "3.3.1-1",
+      "architecture": "arm64",
+      "source": "double-conversion",
+      "depends": "libc6 (>= 2.17), libgcc-s1 (>= 3.0), libstdc++6 (>= 4.1.1)",
+      "pre_depends": "",
+      "sha256": "ea827a47ddffeaa8e95dc8d0c3b8aa9c79b33b2be77109450c2b06a2b89644d8",
+      "license_notice": "licenses/libdouble-conversion3.txt"
+    },
+    {
+      "package": "libdrm-amdgpu1",
+      "version": "2.4.124-2",
+      "architecture": "arm64",
+      "source": "libdrm",
+      "depends": "libc6 (>= 2.38), libdrm2 (>= 2.4.108)",
+      "pre_depends": "",
+      "sha256": "e36c72774cc215818b48ee2174c7ad1d9a2bf89a09cdee7a7a128d288d8eef43",
+      "license_notice": "licenses/libdrm-amdgpu1.txt"
+    },
+    {
+      "package": "libdrm-common",
+      "version": "2.4.124-2",
+      "architecture": "all",
+      "source": "libdrm",
+      "depends": "",
+      "pre_depends": "",
+      "sha256": "9a8a6c65c165e9964f106fb4ac710959b5d33e0790227e3ab6b27c4742d1254a",
+      "license_notice": "licenses/libdrm-common.txt"
+    },
+    {
+      "package": "libdrm2",
+      "version": "2.4.124-2",
+      "architecture": "arm64",
+      "source": "libdrm",
+      "depends": "libdrm-common (>= 2.4.124-2), libc6 (>= 2.38)",
+      "pre_depends": "",
+      "sha256": "b535506630bb6a9a616bc07caf3b29915f980d8c3437852fb96ea64fb1a8a3f8",
+      "license_notice": "licenses/libdrm2.txt"
+    },
+    {
+      "package": "libduktape207",
+      "version": "2.7.0-2+b2",
+      "architecture": "arm64",
+      "source": "duktape",
+      "depends": "libc6 (>= 2.38)",
+      "pre_depends": "",
+      "sha256": "9dcf4d316a8ece7277d21bbdd26b75a5d7d829faf3c7cfd861e30ba89d385516",
+      "license_notice": "licenses/libduktape207.txt"
+    },
+    {
+      "package": "libedit2",
+      "version": "3.1-20250104-1",
+      "architecture": "arm64",
+      "source": "libedit",
+      "depends": "libbsd0 (>= 0.1.3), libc6 (>= 2.38), libtinfo6 (>= 6)",
+      "pre_depends": "",
+      "sha256": "496c31df89fac9cb7e98102fcc21daf887376dcd9914f6322c86dd5bd4360ff1",
+      "license_notice": "licenses/libedit2.txt"
+    },
+    {
+      "package": "libegl-mesa0",
+      "version": "25.0.7-2+deb13u1",
+      "architecture": "arm64",
+      "source": "mesa",
+      "depends": "libc6 (>= 2.38), libdrm2 (>= 2.4.121), libexpat1 (>= 2.0.1), libgbm1 (= 25.0.7-2+deb13u1), libwayland-client0 (>= 1.23.0), libwayland-server0 (>= 1.15.0), libx11-xcb1, libxcb-dri3-0 (>= 1.13), libxcb-present0, libxcb-randr0 (>= 1.3), libxcb-shm0, libxcb-xfixes0, libxcb1 (>= 1.6), mesa-libgallium (= 25.0.7-2+deb13u1)",
+      "pre_depends": "",
+      "sha256": "e344e0c87657d91ebfcb059bee3a3c87ba05871e2918079c3f9393665d4472af",
+      "license_notice": "licenses/libegl-mesa0.txt"
+    },
+    {
+      "package": "libegl1",
+      "version": "1.7.0-1+b2",
+      "architecture": "arm64",
+      "source": "libglvnd",
+      "depends": "libc6 (>= 2.38), libglvnd0 (= 1.7.0-1+b2), libegl-mesa0",
+      "pre_depends": "",
+      "sha256": "b663ad1777df7ed8e320f897bbf678c2baef67f5458fe4a43195ac9b444c7afb",
+      "license_notice": "licenses/libegl1.txt"
+    },
+    {
+      "package": "libelf1t64",
+      "version": "0.192-4",
+      "architecture": "arm64",
+      "source": "elfutils",
+      "depends": "libc6 (>= 2.38), libzstd1 (>= 1.5.5), zlib1g (>= 1:1.1.4)",
+      "pre_depends": "",
+      "sha256": "815b4265c7d6c89c5bbad456bdeed7af893da6912c9d16cf4c581001927c0e37",
+      "license_notice": "licenses/libelf1t64.txt"
+    },
+    {
+      "package": "libevdev2",
+      "version": "1.13.4+dfsg-1",
+      "architecture": "arm64",
+      "source": "libevdev",
+      "depends": "libc6 (>= 2.33)",
+      "pre_depends": "",
+      "sha256": "abdb9ca2f0a27d88ec16b480f346d1d6c183c59e3d071734ba8d8b9794aacfc6",
+      "license_notice": "licenses/libevdev2.txt"
+    },
+    {
+      "package": "libexpat1",
+      "version": "2.9.0-1~deb13u1",
+      "architecture": "arm64",
+      "source": "expat",
+      "depends": "",
+      "pre_depends": "libc6 (>= 2.36)",
+      "sha256": "d9e1c50fcdad079fe16d77f1578adcc763be1bf7f2da7fa8adca7010b0c84c83",
+      "license_notice": "licenses/libexpat1.txt"
+    },
+    {
+      "package": "libffi8",
+      "version": "3.4.8-2",
+      "architecture": "arm64",
+      "source": "libffi",
+      "depends": "libc6 (>= 2.34)",
+      "pre_depends": "",
+      "sha256": "d84a783b818f2386627604e64b793eb4ac5bb9ea1ba321a194a1c9c82fe09a01",
+      "license_notice": "licenses/libffi8.txt"
+    },
+    {
+      "package": "libfontconfig1",
+      "version": "2.15.0-2.3",
+      "architecture": "arm64",
+      "source": "fontconfig",
+      "depends": "libc6 (>= 2.38), libexpat1 (>= 2.0.1), libfreetype6 (>= 2.9.1), fontconfig-config (>= 2.15.0-2.3)",
+      "pre_depends": "",
+      "sha256": "872781cf62926b68c34a4302a3caae334ff8d4d83a2b2477f8fb454460aadc99",
+      "license_notice": "licenses/libfontconfig1.txt"
+    },
+    {
+      "package": "libfreetype6",
+      "version": "2.13.3+dfsg-1+deb13u2",
+      "architecture": "arm64",
+      "source": "freetype",
+      "depends": "libbrotli1 (>= 0.6.0), libbz2-1.0, libc6 (>= 2.33), libpng16-16t64 (>= 1.6.46), zlib1g (>= 1:1.1.4)",
+      "pre_depends": "",
+      "sha256": "e743a5b04183fcc2fc8347abadcecb30c82528012bd446f8168195bd1552721a",
+      "license_notice": "licenses/libfreetype6.txt"
+    },
+    {
+      "package": "libgbm1",
+      "version": "25.0.7-2+deb13u1",
+      "architecture": "arm64",
+      "source": "mesa",
+      "depends": "libc6 (>= 2.38), libdrm2 (>= 2.4.121), libexpat1 (>= 2.0.1), libwayland-server0 (>= 1.15.0), mesa-libgallium (= 25.0.7-2+deb13u1)",
+      "pre_depends": "",
+      "sha256": "2beb8d20ca715a01b7b2352c1167c0d7097c9d8a486704a9a966f95d4077cdfc",
+      "license_notice": "licenses/libgbm1.txt"
+    },
+    {
+      "package": "libgcc-s1",
+      "version": "14.2.0-19",
+      "architecture": "arm64",
+      "source": "gcc-14",
+      "depends": "gcc-14-base (= 14.2.0-19), libc6 (>= 2.35)",
+      "pre_depends": "",
+      "sha256": "1108bc87879833d6d9a145f22a4a15cddb34e065b4b5f4b97bee586adbac2851",
+      "license_notice": "voir copyright partag\u00e9 du paquet source gcc-14"
+    },
+    {
+      "package": "libgcrypt20",
+      "version": "1.11.0-7+deb13u1",
+      "architecture": "arm64",
+      "source": "libgcrypt20",
+      "depends": "libc6 (>= 2.38), libgpg-error0 (>= 1.50)",
+      "pre_depends": "",
+      "sha256": "243a42b879c6675348279a3f9a40e535d57185af00dbfd51b7481e777f163da6",
+      "license_notice": "licenses/libgcrypt20.txt"
+    },
+    {
+      "package": "libgl1-mesa-dri",
+      "version": "25.0.7-2+deb13u1",
+      "architecture": "arm64",
+      "source": "mesa",
+      "depends": "libgbm1 (= 25.0.7-2+deb13u1), libvulkan1, libc6 (>= 2.34)",
+      "pre_depends": "",
+      "sha256": "628245ff9d8e4f11edb66c0854915018402853e0eb588343d472111f6c4fb582",
+      "license_notice": "licenses/libgl1-mesa-dri.txt"
+    },
+    {
+      "package": "libgl1",
+      "version": "1.7.0-1+b2",
+      "architecture": "arm64",
+      "source": "libglvnd",
+      "depends": "libc6 (>= 2.34), libglvnd0 (= 1.7.0-1+b2), libglx0 (= 1.7.0-1+b2)",
+      "pre_depends": "",
+      "sha256": "7943f99962aa3316515760bf44e66f0c15a3c813ad750b784b43e319fa2e6003",
+      "license_notice": "licenses/libgl1.txt"
+    },
+    {
+      "package": "libglib2.0-0t64",
+      "version": "2.84.4-3~deb13u5",
+      "architecture": "arm64",
+      "source": "glib2.0",
+      "depends": "libatomic1 (>= 4.8), libc6 (>= 2.38), libffi8 (>= 3.4), libmount1 (>= 2.40~rc2), libpcre2-8-0 (>= 10.22), libselinux1 (>= 3.1~), zlib1g (>= 1:1.2.2)",
+      "pre_depends": "",
+      "sha256": "d446f0ea85fb9dc411219ce861e59e5eabe1981c796918771a7d2aa97cc72481",
+      "license_notice": "licenses/libglib2.0-0t64.txt"
+    },
+    {
+      "package": "libglvnd0",
+      "version": "1.7.0-1+b2",
+      "architecture": "arm64",
+      "source": "libglvnd",
+      "depends": "libc6 (>= 2.38)",
+      "pre_depends": "",
+      "sha256": "29ec7b8cf1c9a47055de643eb0a1921854e762b4789a7f3bc3b0dea498fd4da9",
+      "license_notice": "licenses/libglvnd0.txt"
+    },
+    {
+      "package": "libglx-mesa0",
+      "version": "25.0.7-2+deb13u1",
+      "architecture": "arm64",
+      "source": "mesa",
+      "depends": "libc6 (>= 2.38), libdrm2 (>= 2.4.121), libexpat1 (>= 2.0.1), libx11-6 (>= 2:1.4.99.1), libx11-xcb1, libxcb-dri3-0, libxcb-glx0 (>= 1.8), libxcb-present0, libxcb-shm0, libxcb-xfixes0, libxcb1, libxext6, libxxf86vm1, mesa-libgallium (= 25.0.7-2+deb13u1), libgl1-mesa-dri",
+      "pre_depends": "",
+      "sha256": "18c02afcdd88f547ba66d3ae9290f93ab155381bf8d96b0127f9028374acfc64",
+      "license_notice": "licenses/libglx-mesa0.txt"
+    },
+    {
+      "package": "libglx0",
+      "version": "1.7.0-1+b2",
+      "architecture": "arm64",
+      "source": "libglvnd",
+      "depends": "libc6 (>= 2.38), libglvnd0 (= 1.7.0-1+b2), libx11-6 (>= 2:1.4.99.1), libglx-mesa0",
+      "pre_depends": "",
+      "sha256": "0245aafaac5e68ca9511f23c5bebf010327e63c65790c03dbb80bf14d485956d",
+      "license_notice": "licenses/libglx0.txt"
+    },
+    {
+      "package": "libgmp10",
+      "version": "2:6.3.0+dfsg-3",
+      "architecture": "arm64",
+      "source": "gmp",
+      "depends": "libc6 (>= 2.38)",
+      "pre_depends": "",
+      "sha256": "a27bbc27f119161ea9702c8dd66f54131cdf0d2ca73000f50ea91ef2fdfef0fb",
+      "license_notice": "licenses/libgmp10.txt"
+    },
+    {
+      "package": "libgnutls30t64",
+      "version": "3.8.9-3+deb13u4",
+      "architecture": "arm64",
+      "source": "gnutls28",
+      "depends": "libc6 (>= 2.38), libgmp10 (>= 2:6.3.0+dfsg), libhogweed6t64 (>= 3.10), libidn2-0 (>= 2.0.0), libnettle8t64 (>= 3.10), libp11-kit0 (>= 0.25.1), libtasn1-6 (>= 4.14), libunistring5 (>= 1.1)",
+      "pre_depends": "",
+      "sha256": "337ef41ab360015d051d6a07f85f8aa6706b35712e3dea23157eba9c902196e2",
+      "license_notice": "licenses/libgnutls30t64.txt"
+    },
+    {
+      "package": "libgomp1",
+      "version": "14.2.0-19",
+      "architecture": "arm64",
+      "source": "gcc-14",
+      "depends": "gcc-14-base (= 14.2.0-19), libc6 (>= 2.38)",
+      "pre_depends": "",
+      "sha256": "43e84cb7971d8a4d8870cab6204e998ea4f23ee1339bb0ff556dd881bac82d25",
+      "license_notice": "voir copyright partag\u00e9 du paquet source gcc-14"
+    },
+    {
+      "package": "libgpg-error0",
+      "version": "1.51-4",
+      "architecture": "arm64",
+      "source": "libgpg-error",
+      "depends": "libc6 (>= 2.38)",
+      "pre_depends": "",
+      "sha256": "f9a8ee3f325360dbbb1c98331c60c7aa454a054a8a4564bc36b3e52fb53e019e",
+      "license_notice": "licenses/libgpg-error0.txt"
+    },
+    {
+      "package": "libgraphite2-3",
+      "version": "1.3.14-2+deb13u1",
+      "architecture": "arm64",
+      "source": "graphite2",
+      "depends": "libc6 (>= 2.17)",
+      "pre_depends": "",
+      "sha256": "b0c3414b113de62be1dc28fa2c899ac0856256e2f094d92c36c3275a5053311a",
+      "license_notice": "licenses/libgraphite2-3.txt"
+    },
+    {
+      "package": "libgssapi-krb5-2",
+      "version": "1.21.3-5+deb13u2",
+      "architecture": "arm64",
+      "source": "krb5",
+      "depends": "libkrb5-3 (= 1.21.3-5+deb13u2), libc6 (>= 2.38), libcom-err2 (>= 1.43.9), libk5crypto3 (>= 1.20), libkrb5support0 (= 1.21.3-5+deb13u2)",
+      "pre_depends": "",
+      "sha256": "10eed2ae453ec56135bf23fbf8b2b19cc6536017a3fe7702814c2bc6e185bf8c",
+      "license_notice": "licenses/libgssapi-krb5-2.txt"
+    },
+    {
+      "package": "libgudev-1.0-0",
+      "version": "238-6",
+      "architecture": "arm64",
+      "source": "libgudev",
+      "depends": "libc6 (>= 2.33), libglib2.0-0t64 (>= 2.80.0), libudev1 (>= 251)",
+      "pre_depends": "",
+      "sha256": "f0fec02f1bbc0803c9d044413609d3cd0fde24bfe6a5141a38aabfa86c292b21",
+      "license_notice": "licenses/libgudev-1.0-0.txt"
+    },
+    {
+      "package": "libharfbuzz0b",
+      "version": "10.2.0-1+deb13u1",
+      "architecture": "arm64",
+      "source": "harfbuzz",
+      "depends": "libc6 (>= 2.38), libfreetype6 (>= 2.11.1), libglib2.0-0t64 (>= 2.32.0), libgraphite2-3 (>= 1.2.2)",
+      "pre_depends": "",
+      "sha256": "3ff928f981b54b491ee12e4cf68558cc5d61c652bdab276cd4c4c3fbbcee16ca",
+      "license_notice": "licenses/libharfbuzz0b.txt"
+    },
+    {
+      "package": "libhogweed6t64",
+      "version": "3.10.1-1",
+      "architecture": "arm64",
+      "source": "nettle",
+      "depends": "libc6 (>= 2.17), libgmp10 (>= 2:6.3.0+dfsg), libnettle8t64",
+      "pre_depends": "",
+      "sha256": "cb92d5a51c4fd6c7b7cbb62aaa60c7af830d0bea5b410fb1f47ee685e26944d1",
+      "license_notice": "licenses/libhogweed6t64.txt"
+    },
+    {
+      "package": "libice6",
+      "version": "2:1.1.1-1",
+      "architecture": "arm64",
+      "source": "libice",
+      "depends": "libc6 (>= 2.38), x11-common",
+      "pre_depends": "",
+      "sha256": "048874f2296660a5e925844635f4d050cb054e7d3459cb15b4c30afb113fbecb",
+      "license_notice": "licenses/libice6.txt"
+    },
+    {
+      "package": "libicu76",
+      "version": "76.1-4",
+      "architecture": "arm64",
+      "source": "icu",
+      "depends": "libc6 (>= 2.38), libgcc-s1 (>= 3.0), libstdc++6 (>= 14)",
+      "pre_depends": "",
+      "sha256": "62eb15577c881b7d02aa861e3eb860902335630cc8174daf525b48c2fa39298f",
+      "license_notice": "licenses/libicu76.txt"
+    },
+    {
+      "package": "libidn2-0",
+      "version": "2.3.8-2",
+      "architecture": "arm64",
+      "source": "libidn2",
+      "depends": "libc6 (>= 2.17), libunistring5 (>= 1.1)",
+      "pre_depends": "",
+      "sha256": "d2e5cef812f15db1eeb35f0a193158ee102a9e94284036c0e293521f2761d2d7",
+      "license_notice": "licenses/libidn2-0.txt"
+    },
+    {
+      "package": "libinput-bin",
+      "version": "1.28.1-1+deb13u1",
+      "architecture": "arm64",
+      "source": "libinput",
+      "depends": "libc6 (>= 2.38), libevdev2 (>= 1.10.0), libudev1 (>= 183), libwacom9 (>= 2.0.0)",
+      "pre_depends": "",
+      "sha256": "9da373d042dd8e0c45e34a5a0dc361cb386fd5ff4f066b7b3e64e1ea66de0835",
+      "license_notice": "licenses/libinput-bin.txt"
+    },
+    {
+      "package": "libinput10",
+      "version": "1.28.1-1+deb13u1",
+      "architecture": "arm64",
+      "source": "libinput",
+      "depends": "libc6 (>= 2.38), libevdev2 (>= 1.10.0), libmtdev1t64 (>= 1.1.0), libudev1 (>= 183), libwacom9 (>= 2.13.0), libinput-bin (>= 1.28.1-1+deb13u1)",
+      "pre_depends": "",
+      "sha256": "a2acd04f3b1e9e91d22a26b63650087a179b6b3dbaddadc92d89edfbb2075ae1",
+      "license_notice": "licenses/libinput10.txt"
+    },
+    {
+      "package": "libjpeg62-turbo",
+      "version": "1:2.1.5-4",
+      "architecture": "arm64",
+      "source": "libjpeg-turbo",
+      "depends": "libc6 (>= 2.17)",
+      "pre_depends": "",
+      "sha256": "e4989073bb0bac8a6ec043c7adb80e1dfe601d8552233da48bb24ab45d1a1d4a",
+      "license_notice": "licenses/libjpeg62-turbo.txt"
+    },
+    {
+      "package": "libk5crypto3",
+      "version": "1.21.3-5+deb13u2",
+      "architecture": "arm64",
+      "source": "krb5",
+      "depends": "libc6 (>= 2.38), libkrb5support0 (= 1.21.3-5+deb13u2)",
+      "pre_depends": "",
+      "sha256": "1982449c930a9b52de8f976cb53af9e8aafb4382e63d7f619659a1e408a2cc5c",
+      "license_notice": "licenses/libk5crypto3.txt"
+    },
+    {
+      "package": "libkeyutils1",
+      "version": "1.6.3-6",
+      "architecture": "arm64",
+      "source": "keyutils",
+      "depends": "libc6 (>= 2.17)",
+      "pre_depends": "",
+      "sha256": "5e680f317a6613161986417fb3ed63007c9228343f5ac2348551b103cc7fd7b4",
+      "license_notice": "licenses/libkeyutils1.txt"
+    },
+    {
+      "package": "libkrb5-3",
+      "version": "1.21.3-5+deb13u2",
+      "architecture": "arm64",
+      "source": "krb5",
+      "depends": "libkrb5support0 (= 1.21.3-5+deb13u2), libc6 (>= 2.38), libcom-err2 (>= 1.43.9), libk5crypto3 (>= 1.20), libkeyutils1 (>= 1.5.9), libssl3t64 (>= 3.0.0)",
+      "pre_depends": "",
+      "sha256": "613608b23bf38abc0ddbf167e6498e443e3cfb3d48e397f01a1af4d3497779f7",
+      "license_notice": "licenses/libkrb5-3.txt"
+    },
+    {
+      "package": "libkrb5support0",
+      "version": "1.21.3-5+deb13u2",
+      "architecture": "arm64",
+      "source": "krb5",
+      "depends": "libc6 (>= 2.38)",
+      "pre_depends": "",
+      "sha256": "637bc4633e83c7d46c08aa00e1680440bd63a1329e5e552955dab59579ddf1d4",
+      "license_notice": "licenses/libkrb5support0.txt"
+    },
+    {
+      "package": "libldap2",
+      "version": "2.6.10+dfsg-1",
+      "architecture": "arm64",
+      "source": "openldap",
+      "depends": "libc6 (>= 2.38), libsasl2-2 (>= 2.1.28+dfsg1), libssl3t64 (>= 3.0.0)",
+      "pre_depends": "",
+      "sha256": "38fae6af20d41e4b0a8ea1b96d0b81a7a5551a61595bc866c9af870eadfdf1bd",
+      "license_notice": "licenses/libldap2.txt"
+    },
+    {
+      "package": "libllvm19",
+      "version": "1:19.1.7-3+b1",
+      "architecture": "arm64",
+      "source": "llvm-toolchain-19",
+      "depends": "libc6 (>= 2.38), libedit2 (>= 2.11-20080614-0), libffi8 (>= 3.4), libgcc-s1 (>= 4.2), libstdc++6 (>= 12), libxml2 (>= 2.7.4), libz3-4 (>= 4.13.3), libzstd1 (>= 1.5.5), zlib1g (>= 1:1.2.0)",
+      "pre_depends": "",
+      "sha256": "8a48e1a49f7fcc3be74e697767d72902f4b03041401d1529bcfad1849df39148",
+      "license_notice": "licenses/libllvm19.txt"
+    },
+    {
+      "package": "liblzma5",
+      "version": "5.8.1-1+deb13u2",
+      "architecture": "arm64",
+      "source": "xz-utils",
+      "depends": "libc6 (>= 2.34)",
+      "pre_depends": "",
+      "sha256": "88f3aa499dc30edf01b9209ab40f11e37edfbecef971f84f4721de1874ed4827",
+      "license_notice": "licenses/liblzma5.txt"
+    },
+    {
+      "package": "libmd0",
+      "version": "1.1.0-2+b1",
+      "architecture": "arm64",
+      "source": "libmd",
+      "depends": "libc6 (>= 2.33)",
+      "pre_depends": "",
+      "sha256": "772e86842fd3fa1816a0cfee4833a73996aaa550461491543b886b9c8f999052",
+      "license_notice": "licenses/libmd0.txt"
+    },
+    {
+      "package": "libmd4c0",
+      "version": "0.5.2-2+b1",
+      "architecture": "arm64",
+      "source": "md4c",
+      "depends": "libc6 (>= 2.17)",
+      "pre_depends": "",
+      "sha256": "fbeaf1abceacb4b081355e16deb7c41e23df719754b10525c35320d808050bda",
+      "license_notice": "licenses/libmd4c0.txt"
+    },
+    {
+      "package": "libmount1",
+      "version": "2.41.5-0+deb13u1",
+      "architecture": "arm64",
+      "source": "util-linux",
+      "depends": "libblkid1 (= 2.41.5-0+deb13u1), libc6 (>= 2.38), libselinux1 (>= 3.1~)",
+      "pre_depends": "",
+      "sha256": "14e2d555459f3c0b1442bb49dd2d266ea202a003198c86f65508a1dbfaa18732",
+      "license_notice": "licenses/libmount1.txt"
+    },
+    {
+      "package": "libmtdev1t64",
+      "version": "1.1.7-1",
+      "architecture": "arm64",
+      "source": "mtdev",
+      "depends": "libc6 (>= 2.17)",
+      "pre_depends": "",
+      "sha256": "3433f77a9f96d0dc537e870db734a4dbb50528836782c86709845736e8897b47",
+      "license_notice": "licenses/libmtdev1t64.txt"
+    },
+    {
+      "package": "libncursesw6",
+      "version": "6.5+20250216-2",
+      "architecture": "arm64",
+      "source": "ncurses",
+      "depends": "libtinfo6 (= 6.5+20250216-2), libc6 (>= 2.34)",
+      "pre_depends": "",
+      "sha256": "72121aeb08be2d915da321ddfae74f62a0764286f336279b2c2609ba07496d6d",
+      "license_notice": "voir copyright partag\u00e9 du paquet source ncurses"
+    },
+    {
+      "package": "libnettle8t64",
+      "version": "3.10.1-1",
+      "architecture": "arm64",
+      "source": "nettle",
+      "depends": "libc6 (>= 2.17)",
+      "pre_depends": "",
+      "sha256": "16107ce5a7b522da021fa8aba42d42af9c5e90ddabfcda3710aff6ea95808ee0",
+      "license_notice": "licenses/libnettle8t64.txt"
+    },
+    {
+      "package": "libnghttp2-14",
+      "version": "1.64.0-1.1+deb13u2",
+      "architecture": "arm64",
+      "source": "nghttp2",
+      "depends": "libc6 (>= 2.17)",
+      "pre_depends": "",
+      "sha256": "968f022ccb34f89c7ac4df0567b4d916f05f9235ad39fe2cf1ab6a12bacf5d80",
+      "license_notice": "licenses/libnghttp2-14.txt"
+    },
+    {
+      "package": "libnghttp3-9",
+      "version": "1.8.0-1",
+      "architecture": "arm64",
+      "source": "nghttp3",
+      "depends": "libc6 (>= 2.17)",
+      "pre_depends": "",
+      "sha256": "26bfb8d1bead043f57d95663bab02f7611e7078fb7cf71383fa480c4b4c24d81",
+      "license_notice": "licenses/libnghttp3-9.txt"
+    },
+    {
+      "package": "libngtcp2-16",
+      "version": "1.11.0-1+deb13u1",
+      "architecture": "arm64",
+      "source": "ngtcp2",
+      "depends": "libc6 (>= 2.25)",
+      "pre_depends": "",
+      "sha256": "1ced2874229e4a503060c244730baf75e61b1d5444472b10e5022f1594f4ab88",
+      "license_notice": "licenses/libngtcp2-16.txt"
+    },
+    {
+      "package": "libngtcp2-crypto-gnutls8",
+      "version": "1.11.0-1+deb13u1",
+      "architecture": "arm64",
+      "source": "ngtcp2",
+      "depends": "libc6 (>= 2.17), libgnutls30t64 (>= 3.8.2), libngtcp2-16 (>= 1.1.0)",
+      "pre_depends": "",
+      "sha256": "4a220245385ec7222f4a20e444532808b90139b70ea9c7eeab179c927a27b37f",
+      "license_notice": "licenses/libngtcp2-crypto-gnutls8.txt"
+    },
+    {
+      "package": "libopengl0",
+      "version": "1.7.0-1+b2",
+      "architecture": "arm64",
+      "source": "libglvnd",
+      "depends": "libc6 (>= 2.34), libglvnd0 (= 1.7.0-1+b2)",
+      "pre_depends": "",
+      "sha256": "1880bc8e29a9dfd2823fc0b88f514eb65699d961ec967d2ed2ba692c241fa09a",
+      "license_notice": "licenses/libopengl0.txt"
+    },
+    {
+      "package": "libp11-kit0",
+      "version": "0.25.5-3",
+      "architecture": "arm64",
+      "source": "p11-kit",
+      "depends": "libc6 (>= 2.38), libffi8 (>= 3.4)",
+      "pre_depends": "",
+      "sha256": "78bfc746e68a5217e845f488f69100ed89d10c8886fbd3ffce937acb6a7d88fb",
+      "license_notice": "licenses/libp11-kit0.txt"
+    },
+    {
+      "package": "libpcre2-16-0",
+      "version": "10.46-1~deb13u3",
+      "architecture": "arm64",
+      "source": "pcre2",
+      "depends": "libc6 (>= 2.34)",
+      "pre_depends": "",
+      "sha256": "6aefea24fc8345e56bdf69a3f36190a4b852d8d000a4ea960888ee3ebedeb13b",
+      "license_notice": "licenses/libpcre2-16-0.txt"
+    },
+    {
+      "package": "libpcre2-8-0",
+      "version": "10.46-1~deb13u3",
+      "architecture": "arm64",
+      "source": "pcre2",
+      "depends": "libc6 (>= 2.34)",
+      "pre_depends": "",
+      "sha256": "1a02b7129990690ea095fd35d7ace6853742923d158019e1fb4ef27efd2c51a7",
+      "license_notice": "licenses/libpcre2-8-0.txt"
+    },
+    {
+      "package": "libpng16-16t64",
+      "version": "1.6.48-1+deb13u6",
+      "architecture": "arm64",
+      "source": "libpng1.6",
+      "depends": "libc6 (>= 2.29), zlib1g (>= 1:1.2.3.4)",
+      "pre_depends": "",
+      "sha256": "57177299a638e30032a7191cc32a1b25fe4de7565164d770685d6d7f56771317",
+      "license_notice": "licenses/libpng16-16t64.txt"
+    },
+    {
+      "package": "libproxy1v5",
+      "version": "0.5.9-1",
+      "architecture": "arm64",
+      "source": "libproxy",
+      "depends": "libc6 (>= 2.17), libcurl3t64-gnutls (>= 7.16.2), libduktape207 (>= 2.0.3), libglib2.0-0t64 (>= 2.80.0)",
+      "pre_depends": "",
+      "sha256": "7758242ac0263b1fcefc01622160c6a965a25d7f284ee6a62a46a8784cfedd6e",
+      "license_notice": "licenses/libproxy1v5.txt"
+    },
+    {
+      "package": "libpsl5t64",
+      "version": "0.21.2-1.1+b1",
+      "architecture": "arm64",
+      "source": "libpsl",
+      "depends": "libidn2-0 (>= 0.16), libc6 (>= 2.33), libunistring5 (>= 1.1)",
+      "pre_depends": "",
+      "sha256": "7ea03d8a7d16edce7b1b1e94980c058c0f1fb3c595eb9154b0e8590d0e7f75af",
+      "license_notice": "licenses/libpsl5t64.txt"
+    },
+    {
+      "package": "libpyside6-py3-6.8",
+      "version": "6.8.2.1-4",
+      "architecture": "arm64",
+      "source": "pyside6",
+      "depends": "python3:any, libc6 (>= 2.32), libgcc-s1 (>= 3.0), libqt6core6t64 (>= 6.8.2), libqt6qml6 (>= 6.8), libshiboken6-py3-6.8 (>= 6.8.2.1), libstdc++6 (>= 5), qt6-base-private-abi (= 6.8.2), qt6-declarative-private-abi (= 6.8.2)",
+      "pre_depends": "",
+      "sha256": "59062ef5c99c322e3806a5c9d0d75895542d3db948a972941401fde3110d1529",
+      "license_notice": "licenses/libpyside6-py3-6.8.txt"
+    },
+    {
+      "package": "libpython3-stdlib",
+      "version": "3.13.5-1",
+      "architecture": "arm64",
+      "source": "python3-defaults",
+      "depends": "libpython3.13-stdlib (>= 3.13.5-1~)",
+      "pre_depends": "",
+      "sha256": "0e5b09b3c90f34399a357c32e1be08a3f31b39d3c615464f00354b309f82e732",
+      "license_notice": "licenses/libpython3-stdlib.txt"
+    },
+    {
+      "package": "libpython3.13-minimal",
+      "version": "3.13.5-2+deb13u5",
+      "architecture": "arm64",
+      "source": "python3.13",
+      "depends": "libc6 (>= 2.17), libssl3t64 (>= 3.4.0)",
+      "pre_depends": "",
+      "sha256": "3655ef258b19142cf6fe38ef89731d5c630b2cf3309632494a720b28c1cfcd85",
+      "license_notice": "licenses/libpython3.13-minimal.txt"
+    },
+    {
+      "package": "libpython3.13-stdlib",
+      "version": "3.13.5-2+deb13u5",
+      "architecture": "arm64",
+      "source": "python3.13",
+      "depends": "libpython3.13-minimal (= 3.13.5-2+deb13u5), media-types ",
+      "pre_depends": " mime-support, netbase, tzdata, libbz2-1.0, libc6 (>= 2.38), libdb5.3t64, libffi8 (>= 3.4), liblzma5 (>= 5.1.1alpha+20120614), libncursesw6 (>= 6.1), libreadline8t64 (>= 7.0~beta), libsqlite3-0 (>= 3.36.0), libtinfo6 (>= 6), libuuid1 (>= 2.20.1)",
+      "sha256": "d1178d24e4d143cc6c577d9dc0f26dd982efccc2e600d25ce86361f168a22be0",
+      "license_notice": "voir copyright partag\u00e9 du paquet source python3.13"
+    },
+    {
+      "package": "libqt6core6t64",
+      "version": "6.8.2+dfsg-9+deb13u2",
+      "architecture": "arm64",
+      "source": "qt6-base",
+      "depends": "shared-mime-info, libb2-1 (>= 0.98.1), libc6 (>= 2.35), libdouble-conversion3 (>= 2.0.0), libgcc-s1 (>= 3.3.1), libglib2.0-0t64 (>= 2.26.0), libicu76 (>= 76.1-1~), libpcre2-16-0 (>= 10.22), libstdc++6 (>= 14), libzstd1 (>= 1.5.5), zlib1g (>= 1:1.2.0)",
+      "pre_depends": "",
+      "sha256": "9a357f28ace917f65d114aaa26aed4ee67e2858797f0a2d01130f299350df208",
+      "license_notice": "licenses/libqt6core6t64.txt"
+    },
+    {
+      "package": "libqt6dbus6",
+      "version": "6.8.2+dfsg-9+deb13u2",
+      "architecture": "arm64",
+      "source": "qt6-base",
+      "depends": "libc6 (>= 2.17), libdbus-1-3 (>= 1.10), libqt6core6t64 (>= 6.8.2), libstdc++6 (>= 5), qt6-base-private-abi (= 6.8.2)",
+      "pre_depends": "",
+      "sha256": "8b638af64728b15c4aee768abed39ab96d40063edde17fa0f633253fdc5bce92",
+      "license_notice": "licenses/libqt6dbus6.txt"
+    },
+    {
+      "package": "libqt6gui6",
+      "version": "6.8.2+dfsg-9+deb13u2",
+      "architecture": "arm64",
+      "source": "qt6-base",
+      "depends": "fontconfig, libc6 (>= 2.38), libdrm2 (>= 2.4.62), libegl1, libfontconfig1 (>= 2.12.6), libfreetype6 (>= 2.11.1), libglib2.0-0t64 (>= 2.26.0), libglx0, libharfbuzz0b (>= 2.1.1), libice6 (>= 1:1.0.0), libinput10 (>= 1.19.1), libjpeg62-turbo (>= 1.3.1), libmd4c0 (>= 0.2.7), libmtdev1t64 (>= 1.0.8), libopengl0, libpng16-16t64 (>= 1.6.46), libqt6core6t64 (>= 6.8.2), libqt6dbus6 (>= 6.8.2), libsm6 (>= 2:1.2.6), libstdc++6 (>= 12), libts0t64 (>= 1.15), libudev1 (>= 183), libx11-6, libx11-xcb1, libxcb-cursor0 (>= 0.0.99), libxcb-glx0, libxcb-icccm4 (>= 0.4.2), libxcb-image0 (>= 0.2.1), libxcb-keysyms1 (>= 0.4.1), libxcb-randr0 (>= 1.12), libxcb-render-util0, libxcb-render0, libxcb-shape0, libxcb-shm0 (>= 1.10), libxcb-sync1, libxcb-xfixes0, libxcb-xinput0 (>= 1.17.0), libxcb-xkb1, libxcb1 (>= 1.8), libxkbcommon-x11-0 (>= 0.5.0), libxkbcommon0 (>= 0.5.0), qt6-base-private-abi (= 6.8.2), zlib1g (>= 1:1.1.4)",
+      "pre_depends": "",
+      "sha256": "665de7d3d4ef9376797b5123a6169cd63a55e3f4f26d338ebf58fee227582d75",
+      "license_notice": "licenses/libqt6gui6.txt"
+    },
+    {
+      "package": "libqt6network6",
+      "version": "6.8.2+dfsg-9+deb13u2",
+      "architecture": "arm64",
+      "source": "qt6-base",
+      "depends": "libssl3t64, libbrotli1 (>= 0.6.0), libc6 (>= 2.38), libglib2.0-0t64 (>= 2.46.0), libgssapi-krb5-2 (>= 1.17), libproxy1v5 (>= 0.5.3), libqt6core6t64 (>= 6.8.2), libqt6dbus6 (>= 6.8.2), libstdc++6 (>= 12), libzstd1 (>= 1.5.5), qt6-base-private-abi (= 6.8.2), zlib1g (>= 1:1.1.4)",
+      "pre_depends": "",
+      "sha256": "ab52b4dd1b197ee500d3ebb93dae1a6caaf567163392c7fbb7472e0fe348b30f",
+      "license_notice": "licenses/libqt6network6.txt"
+    },
+    {
+      "package": "libqt6opengl6",
+      "version": "6.8.2+dfsg-9+deb13u2",
+      "architecture": "arm64",
+      "source": "qt6-base",
+      "depends": "libc6 (>= 2.38), libdrm2 (>= 2.4.62), libegl1, libgbm1 (>= 17.1.0~rc2), libinput10 (>= 1.19.1), libmtdev1t64 (>= 1.0.8), libopengl0, libqt6core6t64 (>= 6.8.2), libqt6gui6 (>= 6.3.1), libstdc++6 (>= 12), libts0t64 (>= 1.15), libudev1 (>= 183), libx11-6, libx11-xcb1, libxcb1, libxkbcommon0 (>= 0.5.0), qt6-base-private-abi (= 6.8.2)",
+      "pre_depends": "",
+      "sha256": "edbc333ff0d23f1e635a4c6c678ddef4c9ff06fb9cc963cebae88f2542d2e8ba",
+      "license_notice": "licenses/libqt6opengl6.txt"
+    },
+    {
+      "package": "libqt6qml6",
+      "version": "6.8.2+dfsg-7",
+      "architecture": "arm64",
+      "source": "qt6-declarative",
+      "depends": "libc6 (>= 2.38), libgcc-s1 (>= 3.0), libqt6core6t64 (>= 6.8.2+dfsg~), libqt6network6 (>= 6.8.2+dfsg~), libstdc++6 (>= 13.1), qt6-base-private-abi (= 6.8.2)",
+      "pre_depends": "",
+      "sha256": "4c3faf0e1548312e67fdf9df8d5c871674fea851ecf65b13c84a517643da3f0f",
+      "license_notice": "licenses/libqt6qml6.txt"
+    },
+    {
+      "package": "libqt6qmlmeta6",
+      "version": "6.8.2+dfsg-7",
+      "architecture": "arm64",
+      "source": "qt6-declarative",
+      "depends": "libc6 (>= 2.17), libqt6core6t64 (>= 6.8.2+dfsg~), libqt6qml6 (>= 6.6.0), libqt6qmlmodels6 (>= 6.6.0), libqt6qmlworkerscript6 (>= 6.6.2), libstdc++6 (>= 12), qt6-base-private-abi (= 6.8.2), qt6-declarative-private-abi (= 6.8.2)",
+      "pre_depends": "",
+      "sha256": "a8bca5d8bc34e9631491ab49fc7a4b1bbb46215a77dd3bd52f2a7ea8637b6b35",
+      "license_notice": "licenses/libqt6qmlmeta6.txt"
+    },
+    {
+      "package": "libqt6qmlmodels6",
+      "version": "6.8.2+dfsg-7",
+      "architecture": "arm64",
+      "source": "qt6-declarative",
+      "depends": "libc6 (>= 2.17), libqt6core6t64 (>= 6.8.2+dfsg~), libqt6qml6 (>= 6.7.2), libstdc++6 (>= 12), qt6-base-private-abi (= 6.8.2), qt6-declarative-private-abi (= 6.8.2)",
+      "pre_depends": "",
+      "sha256": "2ab948dc53768affe1290296539a0ac3f701c5201a5e96bdfc4969a4aee11589",
+      "license_notice": "licenses/libqt6qmlmodels6.txt"
+    },
+    {
+      "package": "libqt6qmlworkerscript6",
+      "version": "6.8.2+dfsg-7",
+      "architecture": "arm64",
+      "source": "qt6-declarative",
+      "depends": "libc6 (>= 2.17), libqt6core6t64 (>= 6.8.2+dfsg~), libqt6network6 (>= 6.8.2+dfsg~), libqt6qml6 (>= 6.6.0), libstdc++6 (>= 5), qt6-declarative-private-abi (= 6.8.2)",
+      "pre_depends": "",
+      "sha256": "cdba1936fe5a9d516fdbe060e6968876f941feb4d562e601cb87477d35d8b97d",
+      "license_notice": "licenses/libqt6qmlworkerscript6.txt"
+    },
+    {
+      "package": "libqt6quick6",
+      "version": "6.8.2+dfsg-7",
+      "architecture": "arm64",
+      "source": "qt6-declarative",
+      "depends": "libc6 (>= 2.38), libqt6core6t64 (>= 6.8.2+dfsg~), libqt6gui6 (>= 6.8.2+dfsg~), libqt6network6 (>= 6.8.2+dfsg~), libqt6opengl6 (>= 6.8.2+dfsg~), libqt6qml6 (>= 6.7.2), libqt6qmlmeta6 (>= 6.8.2), libqt6qmlmodels6 (>= 6.6.0), libstdc++6 (>= 12), qt6-base-private-abi (= 6.8.2), qt6-declarative-private-abi (= 6.8.2)",
+      "pre_depends": "",
+      "sha256": "364c5b773152a2baeb467f40ed86ef8ba1c792d4a78b7d261bf716b367862211",
+      "license_notice": "licenses/libqt6quick6.txt"
+    },
+    {
+      "package": "libqt6quickcontrols2-6",
+      "version": "6.8.2+dfsg-7",
+      "architecture": "arm64",
+      "source": "qt6-declarative",
+      "depends": "libc6 (>= 2.38), libqt6core6t64 (>= 6.8.2+dfsg~), libqt6gui6 (>= 6.8.2+dfsg~), libqt6qml6 (>= 6.6.0), libqt6quick6 (>= 6.6.0), libqt6quicktemplates2-6 (>= 6.6.0), libstdc++6 (>= 5), qt6-base-private-abi (= 6.8.2), qt6-declarative-private-abi (= 6.8.2)",
+      "pre_depends": "",
+      "sha256": "79338d8eb8605930a9c75fc015d6da5a12d8c584af7fb396fef15736690d8fc6",
+      "license_notice": "licenses/libqt6quickcontrols2-6.txt"
+    },
+    {
+      "package": "libqt6quickshapes6",
+      "version": "6.8.2+dfsg-7",
+      "architecture": "arm64",
+      "source": "qt6-declarative",
+      "depends": "libc6 (>= 2.17), libqt6core6t64 (>= 6.8.2+dfsg~), libqt6gui6 (>= 6.8.2+dfsg~), libqt6qml6 (>= 6.6.0), libqt6quick6 (>= 6.8.2), libstdc++6 (>= 5), qt6-base-private-abi (= 6.8.2), qt6-declarative-private-abi (= 6.8.2)",
+      "pre_depends": "",
+      "sha256": "22cecae670af79c2b79b7902c0b525c1ac8056d9c7dbce93e1cbee069db0d82a",
+      "license_notice": "licenses/libqt6quickshapes6.txt"
+    },
+    {
+      "package": "libqt6quicktemplates2-6",
+      "version": "6.8.2+dfsg-7",
+      "architecture": "arm64",
+      "source": "qt6-declarative",
+      "depends": "libc6 (>= 2.17), libqt6core6t64 (>= 6.8.2+dfsg~), libqt6gui6 (>= 6.8.2+dfsg~), libqt6qml6 (>= 6.7.2), libqt6qmlmodels6 (>= 6.6.0), libqt6quick6 (>= 6.7.2), libstdc++6 (>= 12), qt6-base-private-abi (= 6.8.2), qt6-declarative-private-abi (= 6.8.2)",
+      "pre_depends": "",
+      "sha256": "6b053cefeb22e8c113c019e7608bbb27cfbe9a1dd21b06ab685237ca547026db",
+      "license_notice": "licenses/libqt6quicktemplates2-6.txt"
+    },
+    {
+      "package": "libqt6widgets6",
+      "version": "6.8.2+dfsg-9+deb13u2",
+      "architecture": "arm64",
+      "source": "qt6-base",
+      "depends": "libc6 (>= 2.35), libqt6core6t64 (>= 6.8.2), libqt6gui6 (>= 6.8.2), libstdc++6 (>= 12), qt6-base-private-abi (= 6.8.2)",
+      "pre_depends": "",
+      "sha256": "04176b005896051fe0210a40766427daf9e7bc512214b929cd28e559514d947a",
+      "license_notice": "licenses/libqt6widgets6.txt"
+    },
+    {
+      "package": "libreadline8t64",
+      "version": "8.2-6",
+      "architecture": "arm64",
+      "source": "readline",
+      "depends": "readline-common, libc6 (>= 2.38), libtinfo6 (>= 6)",
+      "pre_depends": "",
+      "sha256": "f78ff432b2a627bc04f7eef0e6e2696501c9e06feca748a5b741d5e594429033",
+      "license_notice": "licenses/libreadline8t64.txt"
+    },
+    {
+      "package": "librtmp1",
+      "version": "2.4+20151223.gitfa8646d.1-2+b5",
+      "architecture": "arm64",
+      "source": "rtmpdump",
+      "depends": "libc6 (>= 2.34), libgmp10 (>= 2:6.3.0+dfsg), libgnutls30t64 (>= 3.8.1), libhogweed6t64, libnettle8t64, zlib1g (>= 1:1.1.4)",
+      "pre_depends": "",
+      "sha256": "20d52d20c4834158e956ae8e1d42a61d22330062052116d5422daa2d3b1d433b",
+      "license_notice": "licenses/librtmp1.txt"
+    },
+    {
+      "package": "libsasl2-2",
+      "version": "2.1.28+dfsg1-9",
+      "architecture": "arm64",
+      "source": "cyrus-sasl2",
+      "depends": "libsasl2-modules-db (>= 2.1.28+dfsg1-9), libc6 (>= 2.38), libssl3t64 (>= 3.0.0)",
+      "pre_depends": "",
+      "sha256": "6431628c62524c8397255c1c4a7c7ef63661b801f3be9a59ad41e7a2e46e6210",
+      "license_notice": "licenses/libsasl2-2.txt"
+    },
+    {
+      "package": "libsasl2-modules-db",
+      "version": "2.1.28+dfsg1-9",
+      "architecture": "arm64",
+      "source": "cyrus-sasl2",
+      "depends": "libc6 (>= 2.17), libdb5.3t64",
+      "pre_depends": "",
+      "sha256": "ed6eb05f8ded71ab16a0369845805b373fc8a71c0e7d33f73fa2fb11e83a1977",
+      "license_notice": "licenses/libsasl2-modules-db.txt"
+    },
+    {
+      "package": "libselinux1",
+      "version": "3.8.1-1",
+      "architecture": "arm64",
+      "source": "libselinux",
+      "depends": "libc6 (>= 2.38), libpcre2-8-0 (>= 10.22)",
+      "pre_depends": "",
+      "sha256": "fc13da4c7783b8f4361d92ef1045931f298d1b0ac78ed1a85c2232615f49fc6f",
+      "license_notice": "licenses/libselinux1.txt"
+    },
+    {
+      "package": "libsensors-config",
+      "version": "1:3.6.2-2",
+      "architecture": "all",
+      "source": "lm-sensors",
+      "depends": "",
+      "pre_depends": "",
+      "sha256": "3056da80c7d963af795dab480ab6f6f4b154ad4ac39f522dc52d17c834fea253",
+      "license_notice": "licenses/libsensors-config.txt"
+    },
+    {
+      "package": "libsensors5",
+      "version": "1:3.6.2-2",
+      "architecture": "arm64",
+      "source": "lm-sensors",
+      "depends": "libsensors-config, libc6 (>= 2.38)",
+      "pre_depends": "",
+      "sha256": "7469f1ccce8afdba33d3b11847d0ecdf2221805a0694dee21ee4d622e8f72145",
+      "license_notice": "licenses/libsensors5.txt"
+    },
+    {
+      "package": "libshiboken6-py3-6.8",
+      "version": "6.8.2.1-4",
+      "architecture": "arm64",
+      "source": "pyside6",
+      "depends": "python3 (>= 3~), python3:any, libc6 (>= 2.38), libclang1-19 (>= 1:9~svn360566-1~), libgcc-s1 (>= 3.0), libqt6core6t64 (>= 6.8.2), libstdc++6 (>= 14), libxml2 (>= 2.7.4), libxslt1.1 (>= 1.1.25)",
+      "pre_depends": "",
+      "sha256": "52a8d067e7a402210ebc2a68a2987650a358772df37b1a7b896134f2ff2d550a",
+      "license_notice": "licenses/libshiboken6-py3-6.8.txt"
+    },
+    {
+      "package": "libsm6",
+      "version": "2:1.2.6-1",
+      "architecture": "arm64",
+      "source": "libsm",
+      "depends": "libc6 (>= 2.17), libice6 (>= 1:1.0.0), libuuid1 (>= 2.16)",
+      "pre_depends": "",
+      "sha256": "4906619bbec923da6808cb7e4e817a7667d13cd43bc7d98c77702a03bb103f42",
+      "license_notice": "licenses/libsm6.txt"
+    },
+    {
+      "package": "libsqlite3-0",
+      "version": "3.46.1-7+deb13u2",
+      "architecture": "arm64",
+      "source": "sqlite3",
+      "depends": "libc6 (>= 2.38)",
+      "pre_depends": "",
+      "sha256": "5b09efca71cb7a16d67f5453af3989ae1a84fe6b68c6dd3913de527cb0ca23aa",
+      "license_notice": "licenses/libsqlite3-0.txt"
+    },
+    {
+      "package": "libssh2-1t64",
+      "version": "1.11.1-1+deb13u2",
+      "architecture": "arm64",
+      "source": "libssh2",
+      "depends": "libc6 (>= 2.25), libssl3t64 (>= 3.0.0), zlib1g (>= 1:1.1.4)",
+      "pre_depends": "",
+      "sha256": "245565f4ce5493d67a3c54e26bc3d9cf28b1b70eeb912de7cda61af52268017d",
+      "license_notice": "licenses/libssh2-1t64.txt"
+    },
+    {
+      "package": "libssl3t64",
+      "version": "3.5.9-1~deb13u1",
+      "architecture": "arm64",
+      "source": "openssl",
+      "depends": "libc6 (>= 2.38), libzstd1 (>= 1.5.5), zlib1g (>= 1:1.1.4), openssl-provider-legacy",
+      "pre_depends": "",
+      "sha256": "18edc2b123e8e81efcc14ea5502454b4505285aa9d3325c22315e9304acb25ca",
+      "license_notice": "licenses/libssl3t64.txt"
+    },
+    {
+      "package": "libstdc++6",
+      "version": "14.2.0-19",
+      "architecture": "arm64",
+      "source": "gcc-14",
+      "depends": "gcc-14-base (= 14.2.0-19), libc6 (>= 2.38), libgcc-s1 (>= 4.5)",
+      "pre_depends": "",
+      "sha256": "6669b0c52a2e7c6af9adfdabce3ff6e286065cdfbc7b85280862b5f799daebee",
+      "license_notice": "voir copyright partag\u00e9 du paquet source gcc-14"
+    },
+    {
+      "package": "libsystemd0",
+      "version": "257.13-1~deb13u1",
+      "architecture": "arm64",
+      "source": "systemd",
+      "depends": "libc6 (>= 2.39), libcap2 (>= 1:2.10)",
+      "pre_depends": "",
+      "sha256": "d2f63c408549c29eaefb6f4c948393edce99f45ee8e43c991391bef63fb7d54b",
+      "license_notice": "licenses/libsystemd0.txt"
+    },
+    {
+      "package": "libtasn1-6",
+      "version": "4.20.0-2+deb13u1",
+      "architecture": "arm64",
+      "source": "libtasn1-6",
+      "depends": "libc6 (>= 2.38)",
+      "pre_depends": "",
+      "sha256": "e421da949cd26245f24c594265d6a01900b5e060e80793f68b977f7bfaa009ef",
+      "license_notice": "licenses/libtasn1-6.txt"
+    },
+    {
+      "package": "libtinfo6",
+      "version": "6.5+20250216-2",
+      "architecture": "arm64",
+      "source": "ncurses",
+      "depends": "libc6 (>= 2.34)",
+      "pre_depends": "",
+      "sha256": "2a747f7fff3c2347c357387a7133df997410f07ba1b1df1a1461a97bd7fbc2fc",
+      "license_notice": "licenses/libtinfo6.txt"
+    },
+    {
+      "package": "libts0t64",
+      "version": "1.22-1.1+b1",
+      "architecture": "arm64",
+      "source": "tslib",
+      "depends": "libc6 (>= 2.34)",
+      "pre_depends": "",
+      "sha256": "9d8809fef3271377d95fbf976716802b0c99a0ce6143117547e4eedf44271ea0",
+      "license_notice": "licenses/libts0t64.txt"
+    },
+    {
+      "package": "libudev1",
+      "version": "257.13-1~deb13u1",
+      "architecture": "arm64",
+      "source": "systemd",
+      "depends": "libc6 (>= 2.38), libcap2 (>= 1:2.10)",
+      "pre_depends": "",
+      "sha256": "459b1c9c17cc3c586e90d13d2a991715d498c6eed6c046cabf321021167bc380",
+      "license_notice": "licenses/libudev1.txt"
+    },
+    {
+      "package": "libunistring5",
+      "version": "1.3-2",
+      "architecture": "arm64",
+      "source": "libunistring",
+      "depends": "libc6 (>= 2.34)",
+      "pre_depends": "",
+      "sha256": "4847467a0e47039837895e88f5a99a4a86a3d8266be40c3c896fc7c10d552dc7",
+      "license_notice": "licenses/libunistring5.txt"
+    },
+    {
+      "package": "libuuid1",
+      "version": "2.41.5-0+deb13u1",
+      "architecture": "arm64",
+      "source": "util-linux",
+      "depends": "libc6 (>= 2.38)",
+      "pre_depends": "",
+      "sha256": "448ad6b190184dbff24508ef2eda88bd737a5ffc0f9750eb779fcf9885292bea",
+      "license_notice": "licenses/libuuid1.txt"
+    },
+    {
+      "package": "libvulkan1",
+      "version": "1.4.309.0-1",
+      "architecture": "arm64",
+      "source": "vulkan-loader",
+      "depends": "libc6 (>= 2.38)",
+      "pre_depends": "",
+      "sha256": "f5f576d8b9e5703702a9f3254c8c5d130bef17da9db4aecd46ba86cec7a08930",
+      "license_notice": "licenses/libvulkan1.txt"
+    },
+    {
+      "package": "libwacom-common",
+      "version": "2.14.0-1",
+      "architecture": "all",
+      "source": "libwacom",
+      "depends": "",
+      "pre_depends": "",
+      "sha256": "214956bd9b26600c4d5ac0d60c1685be6ef650644e36b712620c56fccd4d4f58",
+      "license_notice": "licenses/libwacom-common.txt"
+    },
+    {
+      "package": "libwacom9",
+      "version": "2.14.0-1",
+      "architecture": "arm64",
+      "source": "libwacom",
+      "depends": "libc6 (>= 2.38), libevdev2 (>= 1.6.901), libglib2.0-0t64 (>= 2.68.0), libgudev-1.0-0 (>= 146), libwacom-common",
+      "pre_depends": "",
+      "sha256": "8fb8419c43fcc166f996c30cc262fcc86457bdd6f82656dad8619c88dc00b013",
+      "license_notice": "licenses/libwacom9.txt"
+    },
+    {
+      "package": "libwayland-client0",
+      "version": "1.23.1-3",
+      "architecture": "arm64",
+      "source": "wayland",
+      "depends": "libc6 (>= 2.38), libffi8 (>= 3.4)",
+      "pre_depends": "",
+      "sha256": "8abdc649e46470548c545f827e16f52e1bc16d05d4a3794e6dedb2d74ce58c9a",
+      "license_notice": "licenses/libwayland-client0.txt"
+    },
+    {
+      "package": "libwayland-server0",
+      "version": "1.23.1-3",
+      "architecture": "arm64",
+      "source": "wayland",
+      "depends": "libc6 (>= 2.38), libffi8 (>= 3.4)",
+      "pre_depends": "",
+      "sha256": "062702d57cf07b42ab7f0fa1aac8bc3f605eb47f2f0b9ecb1614674140d79f1b",
+      "license_notice": "licenses/libwayland-server0.txt"
+    },
+    {
+      "package": "libx11-6",
+      "version": "2:1.8.12-1",
+      "architecture": "arm64",
+      "source": "libx11",
+      "depends": "libc6 (>= 2.38), libxcb1 (>= 1.11.1), libx11-data",
+      "pre_depends": "",
+      "sha256": "646f2d3f2165c8eebceb7f4aaca31e97a818bb11a045964833a9f764b738bac2",
+      "license_notice": "licenses/libx11-6.txt"
+    },
+    {
+      "package": "libx11-data",
+      "version": "2:1.8.12-1",
+      "architecture": "all",
+      "source": "libx11",
+      "depends": "",
+      "pre_depends": "",
+      "sha256": "c54f87069888f80ba4da586da6147d74c7598ccdd8b90906dbc4271fa414c738",
+      "license_notice": "licenses/libx11-data.txt"
+    },
+    {
+      "package": "libx11-xcb1",
+      "version": "2:1.8.12-1",
+      "architecture": "arm64",
+      "source": "libx11",
+      "depends": "libx11-6 (= 2:1.8.12-1)",
+      "pre_depends": "",
+      "sha256": "1eafaa4295e129d6a81e742ab8da43194daa6b916199923c8cef8ad358985894",
+      "license_notice": "licenses/libx11-xcb1.txt"
+    },
+    {
+      "package": "libxau6",
+      "version": "1:1.0.11-1",
+      "architecture": "arm64",
+      "source": "libxau",
+      "depends": "libc6 (>= 2.33)",
+      "pre_depends": "",
+      "sha256": "ac1061728670f4626adaa1288953a0e6fb801c9cae72ee1c3231e63e2609d23a",
+      "license_notice": "licenses/libxau6.txt"
+    },
+    {
+      "package": "libxcb-cursor0",
+      "version": "0.1.5-1",
+      "architecture": "arm64",
+      "source": "xcb-util-cursor",
+      "depends": "libc6 (>= 2.38), libxcb-image0 (>= 0.2.1), libxcb-render-util0, libxcb-render0, libxcb1",
+      "pre_depends": "",
+      "sha256": "1cb16052bb33d6d2479b4b1dde95b1252a7fcdc5672d0fff72676b3bdf5e66e1",
+      "license_notice": "licenses/libxcb-cursor0.txt"
+    },
+    {
+      "package": "libxcb-dri3-0",
+      "version": "1.17.0-2+b1",
+      "architecture": "arm64",
+      "source": "libxcb",
+      "depends": "libc6 (>= 2.17), libxcb1 (>= 1.12)",
+      "pre_depends": "",
+      "sha256": "247bf758dd78d6c285fdd47942ddacf4a3189fd50de4f0891c9bd9aea12da3a1",
+      "license_notice": "licenses/libxcb-dri3-0.txt"
+    },
+    {
+      "package": "libxcb-glx0",
+      "version": "1.17.0-2+b1",
+      "architecture": "arm64",
+      "source": "libxcb",
+      "depends": "libc6 (>= 2.17), libxcb1",
+      "pre_depends": "",
+      "sha256": "a0d96ab5faea8fa1f3e095d6236597622a6b763f061f8f9fa23b77733608fdbc",
+      "license_notice": "licenses/libxcb-glx0.txt"
+    },
+    {
+      "package": "libxcb-icccm4",
+      "version": "0.4.2-1",
+      "architecture": "arm64",
+      "source": "xcb-util-wm",
+      "depends": "libc6 (>= 2.17), libxcb1",
+      "pre_depends": "",
+      "sha256": "4f9b048b98cd9cd7b0a553c8eff05bcd25cfc4fbfddbe4f83e9d6a9c82e2d876",
+      "license_notice": "licenses/libxcb-icccm4.txt"
+    },
+    {
+      "package": "libxcb-image0",
+      "version": "0.4.0-2+b2",
+      "architecture": "arm64",
+      "source": "xcb-util-image",
+      "depends": "libc6 (>= 2.17), libxcb-shm0, libxcb-util1 (>= 0.4.0), libxcb1",
+      "pre_depends": "",
+      "sha256": "25ea3790081635a5f69c96afa2d44efbd04ad4e4c02d0357bf98ff000f12702a",
+      "license_notice": "licenses/libxcb-image0.txt"
+    },
+    {
+      "package": "libxcb-keysyms1",
+      "version": "0.4.1-1",
+      "architecture": "arm64",
+      "source": "xcb-util-keysyms",
+      "depends": "libc6 (>= 2.17), libxcb1",
+      "pre_depends": "",
+      "sha256": "aa1d09f42d23dc8fb4d7e6069d8d15fe20080f8574321220bcf0d028c8e7a57f",
+      "license_notice": "licenses/libxcb-keysyms1.txt"
+    },
+    {
+      "package": "libxcb-present0",
+      "version": "1.17.0-2+b1",
+      "architecture": "arm64",
+      "source": "libxcb",
+      "depends": "libc6 (>= 2.17), libxcb1",
+      "pre_depends": "",
+      "sha256": "73521d715554a2230901d1d480465d6358b3083a5ce8801639595ffde6f31441",
+      "license_notice": "licenses/libxcb-present0.txt"
+    },
+    {
+      "package": "libxcb-randr0",
+      "version": "1.17.0-2+b1",
+      "architecture": "arm64",
+      "source": "libxcb",
+      "depends": "libc6 (>= 2.17), libxcb1 (>= 1.9.2)",
+      "pre_depends": "",
+      "sha256": "dbeb78d1d032959fe65548758ab12bfc6bb5919ec2984c3d871496b52aef929a",
+      "license_notice": "licenses/libxcb-randr0.txt"
+    },
+    {
+      "package": "libxcb-render-util0",
+      "version": "0.3.10-1",
+      "architecture": "arm64",
+      "source": "xcb-util-renderutil",
+      "depends": "libc6 (>= 2.17), libxcb-render0, libxcb1",
+      "pre_depends": "",
+      "sha256": "f4a33bcc7780f404623a608823b48b91d9ac776a1396d56e9916cbfee49b182c",
+      "license_notice": "licenses/libxcb-render-util0.txt"
+    },
+    {
+      "package": "libxcb-render0",
+      "version": "1.17.0-2+b1",
+      "architecture": "arm64",
+      "source": "libxcb",
+      "depends": "libc6 (>= 2.17), libxcb1 (>= 1.8)",
+      "pre_depends": "",
+      "sha256": "7d6faf0afad0b27a047bbf320bf80999e94b7e6a0f73e42069e8b08958910466",
+      "license_notice": "licenses/libxcb-render0.txt"
+    },
+    {
+      "package": "libxcb-shape0",
+      "version": "1.17.0-2+b1",
+      "architecture": "arm64",
+      "source": "libxcb",
+      "depends": "libc6 (>= 2.17), libxcb1",
+      "pre_depends": "",
+      "sha256": "49f24031f68b9188524954fd1cc237d7cbfe9392d91624cef88d06be13c8075f",
+      "license_notice": "licenses/libxcb-shape0.txt"
+    },
+    {
+      "package": "libxcb-shm0",
+      "version": "1.17.0-2+b1",
+      "architecture": "arm64",
+      "source": "libxcb",
+      "depends": "libc6 (>= 2.17), libxcb1 (>= 1.12)",
+      "pre_depends": "",
+      "sha256": "e9e871dc5d2f9265eb5d3028f0d0545cb6f8b748a68997b4c43f5a9416c7ead7",
+      "license_notice": "licenses/libxcb-shm0.txt"
+    },
+    {
+      "package": "libxcb-sync1",
+      "version": "1.17.0-2+b1",
+      "architecture": "arm64",
+      "source": "libxcb",
+      "depends": "libc6 (>= 2.17), libxcb1",
+      "pre_depends": "",
+      "sha256": "eb428ac77daac9e5eea8a4e9ba48d1d78cc8ca400e415c8e4628cc729c6f4749",
+      "license_notice": "licenses/libxcb-sync1.txt"
+    },
+    {
+      "package": "libxcb-util1",
+      "version": "0.4.1-1",
+      "architecture": "arm64",
+      "source": "xcb-util",
+      "depends": "libc6 (>= 2.17), libxcb1",
+      "pre_depends": "",
+      "sha256": "a82432686fcb65dbbf5319b79cc68ab9c8a0102e969163219c6f0e0b657e393e",
+      "license_notice": "licenses/libxcb-util1.txt"
+    },
+    {
+      "package": "libxcb-xfixes0",
+      "version": "1.17.0-2+b1",
+      "architecture": "arm64",
+      "source": "libxcb",
+      "depends": "libc6 (>= 2.17), libxcb1",
+      "pre_depends": "",
+      "sha256": "19cdb8502827bc010993e69eaba09c670024976f7edd35b2b504bd646b141b0a",
+      "license_notice": "licenses/libxcb-xfixes0.txt"
+    },
+    {
+      "package": "libxcb-xinput0",
+      "version": "1.17.0-2+b1",
+      "architecture": "arm64",
+      "source": "libxcb",
+      "depends": "libc6 (>= 2.17), libxcb1 (>= 1.8)",
+      "pre_depends": "",
+      "sha256": "ebc39f2f1940a03963b0c1db916b19178e8078132adb669a27cfa8dd38c5d3c3",
+      "license_notice": "licenses/libxcb-xinput0.txt"
+    },
+    {
+      "package": "libxcb-xkb1",
+      "version": "1.17.0-2+b1",
+      "architecture": "arm64",
+      "source": "libxcb",
+      "depends": "libc6 (>= 2.17), libxcb1",
+      "pre_depends": "",
+      "sha256": "739b023ad82b4c9ac2c6cc9e6cc8602a17a05f7f5387d45a5a60eafdc17bf0e5",
+      "license_notice": "licenses/libxcb-xkb1.txt"
+    },
+    {
+      "package": "libxcb1",
+      "version": "1.17.0-2+b1",
+      "architecture": "arm64",
+      "source": "libxcb",
+      "depends": "libc6 (>= 2.38), libxau6 (>= 1:1.0.9), libxdmcp6",
+      "pre_depends": "",
+      "sha256": "d0178198e80ed4cacdececabe2c112ec88c7a9258cc11a55b8e267ab14a90d82",
+      "license_notice": "licenses/libxcb1.txt"
+    },
+    {
+      "package": "libxdmcp6",
+      "version": "1:1.1.5-1",
+      "architecture": "arm64",
+      "source": "libxdmcp",
+      "depends": "libc6 (>= 2.36)",
+      "pre_depends": "",
+      "sha256": "e10bbb0802181992ecf091e9425171850eee16068729c109214ba4924f81fb52",
+      "license_notice": "licenses/libxdmcp6.txt"
+    },
+    {
+      "package": "libxext6",
+      "version": "2:1.3.4-1+b3",
+      "architecture": "arm64",
+      "source": "libxext",
+      "depends": "libc6 (>= 2.17), libx11-6 (>= 2:1.6.0)",
+      "pre_depends": "",
+      "sha256": "27cf208c6d2924b22ed3b9ceff304b992e1f07ef7b0ef00239585595581dac99",
+      "license_notice": "licenses/libxext6.txt"
+    },
+    {
+      "package": "libxkbcommon-x11-0",
+      "version": "1.7.0-2",
+      "architecture": "arm64",
+      "source": "libxkbcommon",
+      "depends": "libxkbcommon0 (= 1.7.0-2), libc6 (>= 2.17), libxcb-xkb1, libxcb1 (>= 1.6)",
+      "pre_depends": "",
+      "sha256": "414ec70596c8193b309279dc6d8a35f809ffe5047addc3587a6d52eb462bebc5",
+      "license_notice": "licenses/libxkbcommon-x11-0.txt"
+    },
+    {
+      "package": "libxkbcommon0",
+      "version": "1.7.0-2",
+      "architecture": "arm64",
+      "source": "libxkbcommon",
+      "depends": "xkb-data, libc6 (>= 2.38)",
+      "pre_depends": "",
+      "sha256": "866888d3cfeb32388dd88a2615c4f78ebf8dd7b272821a83494cba260d8fa7d1",
+      "license_notice": "licenses/libxkbcommon0.txt"
+    },
+    {
+      "package": "libxml2",
+      "version": "2.12.7+dfsg+really2.9.14-2.1+deb13u3",
+      "architecture": "arm64",
+      "source": "libxml2",
+      "depends": "libc6 (>= 2.38), liblzma5 (>= 5.1.1alpha+20120614), zlib1g (>= 1:1.2.3.4)",
+      "pre_depends": "",
+      "sha256": "a66b9c960acef8ed9653223cbd00b155a92ebb758ea13a788c41609246c23bc7",
+      "license_notice": "licenses/libxml2.txt"
+    },
+    {
+      "package": "libxshmfence1",
+      "version": "1.3.3-1",
+      "architecture": "arm64",
+      "source": "libxshmfence",
+      "depends": "libc6 (>= 2.38)",
+      "pre_depends": "",
+      "sha256": "34b494c83cebcf138d1f87c2cbdd5ee8efe9da2befbd69c2a025b0e214c64d2d",
+      "license_notice": "licenses/libxshmfence1.txt"
+    },
+    {
+      "package": "libxslt1.1",
+      "version": "1.1.35-1.2+deb13u3",
+      "architecture": "arm64",
+      "source": "libxslt",
+      "depends": "libc6 (>= 2.38), libgcrypt20 (>= 1.11.0), libxml2 (>= 2.9.0)",
+      "pre_depends": "",
+      "sha256": "590a5d177dcfa2bf432f0d7db80b936ac7afadfebdb7f077d0c3305da20d1897",
+      "license_notice": "licenses/libxslt1.1.txt"
+    },
+    {
+      "package": "libxxf86vm1",
+      "version": "1:1.1.4-1+b4",
+      "architecture": "arm64",
+      "source": "libxxf86vm",
+      "depends": "libc6 (>= 2.17), libx11-6 (>= 2:1.6.0), libxext6",
+      "pre_depends": "",
+      "sha256": "9ed4bb25e311486207eeaa609decc3905aa9071c4c7f2a605829e3a79ec88b83",
+      "license_notice": "licenses/libxxf86vm1.txt"
+    },
+    {
+      "package": "libz3-4",
+      "version": "4.13.3-1",
+      "architecture": "arm64",
+      "source": "z3",
+      "depends": "libc6 (>= 2.38), libgcc-s1 (>= 3.0), libstdc++6 (>= 14)",
+      "pre_depends": "",
+      "sha256": "29a7b924a5a38c9ac4e2a64aa11586a9c54f26b579b18e4f75adf8f7c1106e45",
+      "license_notice": "licenses/libz3-4.txt"
+    },
+    {
+      "package": "libzstd1",
+      "version": "1.5.7+dfsg-1+deb13u1",
+      "architecture": "arm64",
+      "source": "libzstd",
+      "depends": "libc6 (>= 2.34)",
+      "pre_depends": "",
+      "sha256": "ab5ad90f986b315bfa12be50f438aa3453e32da3b29540844d2d847800d2ce08",
+      "license_notice": "licenses/libzstd1.txt"
+    },
+    {
+      "package": "lsb-base",
+      "version": "11.6",
+      "architecture": "all",
+      "source": "lsb",
+      "depends": "sysvinit-utils (>= 3.05-4~)",
+      "pre_depends": "",
+      "sha256": "f8bedd167280e76636df3a1bc023cd2906d458916c1af4c1d7912c5b971fc642",
+      "license_notice": "licenses/lsb-base.txt"
+    },
+    {
+      "package": "media-types",
+      "version": "13.0.0",
+      "architecture": "all",
+      "source": "media-types",
+      "depends": "",
+      "pre_depends": "",
+      "sha256": "0788e4b0b72db1bcf74a19cb24c3511e7770ad0b341f0f30e361701c3072f53e",
+      "license_notice": "licenses/media-types.txt"
+    },
+    {
+      "package": "mesa-libgallium",
+      "version": "25.0.7-2+deb13u1",
+      "architecture": "arm64",
+      "source": "mesa",
+      "depends": "libc6 (>= 2.38), libdrm-amdgpu1 (>= 2.4.121), libdrm2 (>= 2.4.121), libelf1t64 (>= 0.142), libexpat1 (>= 2.0.1), libgcc-s1 (>= 3.0), libllvm19 (>= 1:19.1.0), libsensors5 (>= 1:3.5.0), libstdc++6 (>= 11), libx11-xcb1, libxcb-dri3-0 (>= 1.13), libxcb-present0, libxcb-randr0, libxcb-sync1, libxcb-xfixes0, libxcb1 (>= 1.9.2), libxshmfence1, libzstd1 (>= 1.5.5), zlib1g (>= 1:1.2.3.4)",
+      "pre_depends": "",
+      "sha256": "a27576030704ff305adaef8bd143954b281680861d5bfe21aabd7d376a939149",
+      "license_notice": "licenses/mesa-libgallium.txt"
+    },
+    {
+      "package": "netbase",
+      "version": "6.5",
+      "architecture": "all",
+      "source": "netbase",
+      "depends": "",
+      "pre_depends": "",
+      "sha256": "76bafa92947ebd37b0a6f9ec6570412041f56edebc1c66d323731216d318471e",
+      "license_notice": "licenses/netbase.txt"
+    },
+    {
+      "package": "openssl-provider-legacy",
+      "version": "3.5.9-1~deb13u1",
+      "architecture": "arm64",
+      "source": "openssl",
+      "depends": "libc6 (>= 2.17), libssl3t64 (>= 3.0.3)",
+      "pre_depends": "",
+      "sha256": "007165f42b5cecf71674a047480f96035e290c2f0c5102030cb186481bb8dc84",
+      "license_notice": "licenses/openssl-provider-legacy.txt"
+    },
+    {
+      "package": "python3-minimal",
+      "version": "3.13.5-1",
+      "architecture": "arm64",
+      "source": "python3-defaults",
+      "depends": "dpkg (>= 1.13.20)",
+      "pre_depends": "python3.13-minimal (>= 3.13.5-1~)",
+      "sha256": "b1dff61d3e68c83c747b03399356ba707d491bcaf6e495b575d46be3143cdec8",
+      "license_notice": "licenses/python3-minimal.txt"
+    },
+    {
+      "package": "python3-pyside6.qtcore",
+      "version": "6.8.2.1-4",
+      "architecture": "arm64",
+      "source": "pyside6",
+      "depends": "python3 (>= 3~), libc6 (>= 2.34), libpyside6-py3-6.8 (>= 6.8.2.1), libqt6core6t64 (>= 6.8.2), libshiboken6-py3-6.8 (>= 6.8.2.1), libstdc++6 (>= 5.2), qt6-base-private-abi (= 6.8.2)",
+      "pre_depends": "",
+      "sha256": "17a5d873c73a87b52d9319db8c785c9ae8d43d2272ec432db0a483c92c9b1f95",
+      "license_notice": "licenses/python3-pyside6.qtcore.txt"
+    },
+    {
+      "package": "python3-pyside6.qtgui",
+      "version": "6.8.2.1-4",
+      "architecture": "arm64",
+      "source": "pyside6",
+      "depends": "python3-pyside6.qtcore, python3 (>= 3~), libc6 (>= 2.35), libgl1, libpyside6-py3-6.8 (>= 6.8.2.1), libqt6core6t64 (>= 6.8.2), libqt6gui6 (>= 6.8.2), libshiboken6-py3-6.8 (>= 6.8.2.1), libstdc++6 (>= 5), qt6-base-private-abi (= 6.8.2)",
+      "pre_depends": "",
+      "sha256": "3713ad04298ecd7d34d1c216629c75d620086da89dd07aacfb660ddc0047ad35",
+      "license_notice": "licenses/python3-pyside6.qtgui.txt"
+    },
+    {
+      "package": "python3-pyside6.qtnetwork",
+      "version": "6.8.2.1-4",
+      "architecture": "arm64",
+      "source": "pyside6",
+      "depends": "python3-pyside6.qtcore, python3 (>= 3~), libc6 (>= 2.17), libpyside6-py3-6.8 (>= 6.8.2.1), libqt6core6t64 (>= 6.8.2), libqt6network6 (>= 6.8.2), libshiboken6-py3-6.8 (>= 6.8.2.1), libstdc++6 (>= 5)",
+      "pre_depends": "",
+      "sha256": "50849741dc78c985fa5fb06000b3a501e2de3d54c66e101a2b359b210db8eb67",
+      "license_notice": "licenses/python3-pyside6.qtnetwork.txt"
+    },
+    {
+      "package": "python3-pyside6.qtopengl",
+      "version": "6.8.2.1-4",
+      "architecture": "arm64",
+      "source": "pyside6",
+      "depends": "python3-pyside6.qtcore, python3-pyside6.qtgui, python3-pyside6.qtwidgets, python3 (>= 3~), libc6 (>= 2.17), libgl1, libpyside6-py3-6.8 (>= 6.8.2.1), libqt6core6t64 (>= 6.8.2), libqt6gui6 (>= 6.8), libqt6opengl6 (>= 6.8), libshiboken6-py3-6.8 (>= 6.8.2.1), libstdc++6 (>= 5)",
+      "pre_depends": "",
+      "sha256": "db8a07269f02edf1c92ad41723bc143a75a61f75c76987935ac3e5a3615b8276",
+      "license_notice": "licenses/python3-pyside6.qtopengl.txt"
+    },
+    {
+      "package": "python3-pyside6.qtqml",
+      "version": "6.8.2.1-4",
+      "architecture": "arm64",
+      "source": "pyside6",
+      "depends": "python3-pyside6.qtcore, python3-pyside6.qtgui, python3-pyside6.qtnetwork, python3 (>= 3~), libc6 (>= 2.38), libpyside6-py3-6.8 (>= 6.8.2.1), libqt6core6t64 (>= 6.8.2), libqt6qml6 (>= 6.8), libshiboken6-py3-6.8 (>= 6.8.2.1), libstdc++6 (>= 5)",
+      "pre_depends": "",
+      "sha256": "32ba2cc72bf61119f4eba9b738dd4da44314559a3f7b850ab4063ad041ef1c9c",
+      "license_notice": "licenses/python3-pyside6.qtqml.txt"
+    },
+    {
+      "package": "python3-pyside6.qtquick",
+      "version": "6.8.2.1-4",
+      "architecture": "arm64",
+      "source": "pyside6",
+      "depends": "python3-pyside6.qtcore, python3-pyside6.qtgui, python3-pyside6.qtnetwork, python3-pyside6.qtopengl, python3-pyside6.qtqml, python3 (>= 3~), libc6 (>= 2.17), libgl1, libpyside6-py3-6.8 (>= 6.8.2.1), libqt6core6t64 (>= 6.8.2), libqt6gui6 (>= 6.8), libqt6qml6 (>= 6.8), libqt6quick6 (>= 6.8.2), libshiboken6-py3-6.8 (>= 6.8.2.1), libstdc++6 (>= 5)",
+      "pre_depends": "",
+      "sha256": "d135869e092f4187156f9e7045e2147e1d5e3eed28e8c422f2d1c271f0552111",
+      "license_notice": "licenses/python3-pyside6.qtquick.txt"
+    },
+    {
+      "package": "python3-pyside6.qtwidgets",
+      "version": "6.8.2.1-4",
+      "architecture": "arm64",
+      "source": "pyside6",
+      "depends": "python3-pyside6.qtcore, python3-pyside6.qtgui, python3 (>= 3~), libc6 (>= 2.17), libgl1, libpyside6-py3-6.8 (>= 6.8.2.1), libqt6core6t64 (>= 6.8.2), libqt6gui6 (>= 6.8), libqt6widgets6 (>= 6.8.2), libshiboken6-py3-6.8 (>= 6.8.2.1), libstdc++6 (>= 5)",
+      "pre_depends": "",
+      "sha256": "8a60cf19b8aeb73f4315c70d4649a5d32fb4e39c8f806d16522c65630e116c26",
+      "license_notice": "licenses/python3-pyside6.qtwidgets.txt"
+    },
+    {
+      "package": "python3.13-minimal",
+      "version": "3.13.5-2+deb13u5",
+      "architecture": "arm64",
+      "source": "python3.13",
+      "depends": "libpython3.13-minimal (= 3.13.5-2+deb13u5), libexpat1 (>= 2.6.0), zlib1g (>= 1:1.2.0)",
+      "pre_depends": "libc6 (>= 2.38)",
+      "sha256": "95237a3ad99bf9366308e16f7c79449c9371c4cff9c883772fb7c254652467eb",
+      "license_notice": "licenses/python3.13-minimal.txt"
+    },
+    {
+      "package": "python3.13",
+      "version": "3.13.5-2+deb13u5",
+      "architecture": "arm64",
+      "source": "python3.13",
+      "depends": "python3.13-minimal (= 3.13.5-2+deb13u5), libpython3.13-stdlib (= 3.13.5-2+deb13u5), media-types ",
+      "pre_depends": " mime-support, tzdata",
+      "sha256": "3d027394c6afd08a2663c3da588824aa9ee0c54e3c2b4382bb9f644584bc99a1",
+      "license_notice": "licenses/python3.13.txt"
+    },
+    {
+      "package": "python3",
+      "version": "3.13.5-1",
+      "architecture": "arm64",
+      "source": "python3-defaults",
+      "depends": "python3.13 (>= 3.13.5-1~), libpython3-stdlib (= 3.13.5-1)",
+      "pre_depends": "python3-minimal (= 3.13.5-1)",
+      "sha256": "8d5be256bf3bb4f07afce1aa86f0595c6939e1a6c2ea939bdcb7b36351cbe021",
+      "license_notice": "licenses/python3.txt"
+    },
+    {
+      "package": "qml6-module-qt-labs-folderlistmodel",
+      "version": "6.8.2+dfsg-7",
+      "architecture": "arm64",
+      "source": "qt6-declarative",
+      "depends": "qml6-module-qtqml-models, libc6 (>= 2.17), libqt6core6t64 (>= 6.8.2+dfsg~), libqt6qml6 (>= 6.6.0), libstdc++6 (>= 5)",
+      "pre_depends": "",
+      "sha256": "1a055ba39021d43a455d8b80406131976090866f4dc5da5703bf56945d2913ae",
+      "license_notice": "licenses/qml6-module-qt-labs-folderlistmodel.txt"
+    },
+    {
+      "package": "qml6-module-qtqml-models",
+      "version": "6.8.2+dfsg-7",
+      "architecture": "arm64",
+      "source": "qt6-declarative",
+      "depends": "libc6 (>= 2.17), libqt6core6t64 (>= 6.8.2+dfsg~), libqt6qml6 (>= 6.6.0), libqt6qmlmodels6 (>= 6.6.0), libstdc++6 (>= 5)",
+      "pre_depends": "",
+      "sha256": "e0f9f0fef8169eaf2005055bd0e6d04b4cc93cf05e548629d5ccc180a973142a",
+      "license_notice": "licenses/qml6-module-qtqml-models.txt"
+    },
+    {
+      "package": "qml6-module-qtqml-workerscript",
+      "version": "6.8.2+dfsg-7",
+      "architecture": "arm64",
+      "source": "qt6-declarative",
+      "depends": "libc6 (>= 2.17), libqt6core6t64 (>= 6.8.2+dfsg~), libqt6qml6 (>= 6.6.0), libqt6qmlworkerscript6 (>= 6.6.2), libstdc++6 (>= 5)",
+      "pre_depends": "",
+      "sha256": "0d18ad1be01b23da8611e9becbb0bf5510c56b7725ee0b107a94b6af96f1d9de",
+      "license_notice": "licenses/qml6-module-qtqml-workerscript.txt"
+    },
+    {
+      "package": "qml6-module-qtqml",
+      "version": "6.8.2+dfsg-7",
+      "architecture": "arm64",
+      "source": "qt6-declarative",
+      "depends": "qml6-module-qtqml-models, qml6-module-qtqml-workerscript, libc6 (>= 2.17), libqt6core6t64 (>= 6.8.2+dfsg~), libqt6qml6 (>= 6.6.0), libqt6qmlmeta6 (>= 6.8.2), libstdc++6 (>= 5)",
+      "pre_depends": "",
+      "sha256": "52e7eaeb9b857039309dc6652e90a5d1ecd581382ba1fb7548a61d6cd783c4aa",
+      "license_notice": "licenses/qml6-module-qtqml.txt"
+    },
+    {
+      "package": "qml6-module-qtquick-controls",
+      "version": "6.8.2+dfsg-7",
+      "architecture": "arm64",
+      "source": "qt6-declarative",
+      "depends": "qml6-module-qtquick (= 6.8.2+dfsg-7), qml6-module-qtquick-templates (= 6.8.2+dfsg-7), qml6-module-qtquick-shapes, qml6-module-qtquick-window, libc6 (>= 2.17), libqt6core6t64 (>= 6.8.2+dfsg~), libqt6qml6 (>= 6.6.0), libqt6quickcontrols2-6 (>= 6.6.0), libstdc++6 (>= 5), qt6-base-private-abi (= 6.8.2), qt6-declarative-private-abi (= 6.8.2)",
+      "pre_depends": "",
+      "sha256": "e09bff665fc9cfb59bc58d2591b0302144f23e4720426452cef4c3e128c97132",
+      "license_notice": "licenses/qml6-module-qtquick-controls.txt"
+    },
+    {
+      "package": "qml6-module-qtquick-dialogs",
+      "version": "6.8.2+dfsg-7",
+      "architecture": "arm64",
+      "source": "qt6-declarative",
+      "depends": "qml6-module-qt-labs-folderlistmodel, qml6-module-qtquick, qml6-module-qtquick-controls, qml6-module-qtquick-layouts, qml6-module-qtquick-templates, libc6 (>= 2.17), libqt6core6t64 (>= 6.8.2+dfsg~), libqt6gui6 (>= 6.8.2+dfsg~), libqt6qml6 (>= 6.6.0), libqt6quick6 (>= 6.7.2), libqt6quicktemplates2-6 (>= 6.6.0), libstdc++6 (>= 5), qt6-base-private-abi (= 6.8.2), qt6-declarative-private-abi (= 6.8.2)",
+      "pre_depends": "",
+      "sha256": "6e031e4460b77ccd4379e265b9290608534ccd68933215c8c38221c081a787e5",
+      "license_notice": "licenses/qml6-module-qtquick-dialogs.txt"
+    },
+    {
+      "package": "qml6-module-qtquick-layouts",
+      "version": "6.8.2+dfsg-7",
+      "architecture": "arm64",
+      "source": "qt6-declarative",
+      "depends": "qml6-module-qtquick, libc6 (>= 2.17), libqt6core6t64 (>= 6.8.2+dfsg~), libqt6gui6 (>= 6.8.2+dfsg~), libqt6qml6 (>= 6.6.0), libqt6quick6 (>= 6.6.0), libstdc++6 (>= 5), qt6-base-private-abi (= 6.8.2), qt6-declarative-private-abi (= 6.8.2)",
+      "pre_depends": "",
+      "sha256": "bd6e30c5e6e1b5ab1ff5ca8f3378e42eccb385c1892c1e68222a2a056c014a0f",
+      "license_notice": "licenses/qml6-module-qtquick-layouts.txt"
+    },
+    {
+      "package": "qml6-module-qtquick-shapes",
+      "version": "6.8.2+dfsg-7",
+      "architecture": "arm64",
+      "source": "qt6-declarative",
+      "depends": "qml6-module-qtquick, libc6 (>= 2.17), libqt6core6t64 (>= 6.8.2+dfsg~), libqt6qml6 (>= 6.6.0), libqt6quickshapes6 (>= 6.6.0), libstdc++6 (>= 5)",
+      "pre_depends": "",
+      "sha256": "25f6e4fd45c55504054c7da92acf6dc29b45d5c121d65ebb03d6ce9072f5707b",
+      "license_notice": "licenses/qml6-module-qtquick-shapes.txt"
+    },
+    {
+      "package": "qml6-module-qtquick-templates",
+      "version": "6.8.2+dfsg-7",
+      "architecture": "arm64",
+      "source": "qt6-declarative",
+      "depends": "qml6-module-qtquick, libc6 (>= 2.17), libqt6core6t64 (>= 6.8.2+dfsg~), libqt6qml6 (>= 6.6.0), libqt6quick6 (>= 6.6.0), libqt6quicktemplates2-6 (>= 6.6.0), libstdc++6 (>= 5), qt6-declarative-private-abi (= 6.8.2)",
+      "pre_depends": "",
+      "sha256": "ffc6ce7a85489b938b6f9425f88ed7da1787d6b6ba5b6968a8ba7c022e4dbf7c",
+      "license_notice": "licenses/qml6-module-qtquick-templates.txt"
+    },
+    {
+      "package": "qml6-module-qtquick-window",
+      "version": "6.8.2+dfsg-7",
+      "architecture": "arm64",
+      "source": "qt6-declarative",
+      "depends": "qml6-module-qtquick, libc6 (>= 2.17), libqt6core6t64 (>= 6.8.2+dfsg~), libqt6qml6 (>= 6.6.0), libstdc++6 (>= 5)",
+      "pre_depends": "",
+      "sha256": "ecd1cc14d727f78137823f84016448ff92e606b4ecb5209cad26e211281f904c",
+      "license_notice": "licenses/qml6-module-qtquick-window.txt"
+    },
+    {
+      "package": "qml6-module-qtquick",
+      "version": "6.8.2+dfsg-7",
+      "architecture": "arm64",
+      "source": "qt6-declarative",
+      "depends": "qml6-module-qtqml, libc6 (>= 2.17), libqt6core6t64 (>= 6.8.2+dfsg~), libqt6qml6 (>= 6.6.0), libqt6quick6 (>= 6.6.0), libstdc++6 (>= 5)",
+      "pre_depends": "",
+      "sha256": "19a6fa97202aafeeebb1c06e3612b915ab4c5205f9d21e9a64dbfd1093e3d802",
+      "license_notice": "licenses/qml6-module-qtquick.txt"
+    },
+    {
+      "package": "readline-common",
+      "version": "8.2-6",
+      "architecture": "all",
+      "source": "readline",
+      "depends": "",
+      "pre_depends": "",
+      "sha256": "f77e8aa0bf0de618f11cb0b21658a4ed60f177d63b3cf26d7fc3706b6d0eaaa9",
+      "license_notice": "licenses/readline-common.txt"
+    },
+    {
+      "package": "shared-mime-info",
+      "version": "2.4-5+b2",
+      "architecture": "arm64",
+      "source": "shared-mime-info",
+      "depends": "libc6 (>= 2.38), libgcc-s1 (>= 3.0), libglib2.0-0t64 (>= 2.76.0), libstdc++6 (>= 12), libxml2 (>= 2.7.4)",
+      "pre_depends": "",
+      "sha256": "a68086d0fdffc32fa05b1768f67b83d06344b026a855e29daa7ff02d64deec59",
+      "license_notice": "licenses/shared-mime-info.txt"
+    },
+    {
+      "package": "sysvinit-utils",
+      "version": "3.14-4",
+      "architecture": "arm64",
+      "source": "sysvinit",
+      "depends": "libc6 (>= 2.38)",
+      "pre_depends": "",
+      "sha256": "1366e87a382a6b95a0a7c507b8f1be9b193f772f3428f9f7e0271a217915cfae",
+      "license_notice": "licenses/sysvinit-utils.txt"
+    },
+    {
+      "package": "tar",
+      "version": "1.35+dfsg-3.1",
+      "architecture": "arm64",
+      "source": "tar",
+      "depends": "",
+      "pre_depends": "libacl1 (>= 2.2.23), libc6 (>= 2.38), libselinux1 (>= 3.1~)",
+      "sha256": "c460a8294202ca3802b7c703b0bd70dd8bda1f2fc8785839595cf9d5e060d71b",
+      "license_notice": "licenses/tar.txt"
+    },
+    {
+      "package": "tzdata",
+      "version": "2026f-0+deb13u1",
+      "architecture": "all",
+      "source": "tzdata",
+      "depends": "debconf (>= 0.5) ",
+      "pre_depends": " debconf-2.0",
+      "sha256": "2c1c561091402883430d0d47c57a3c0aa00b44afc8a6239265065a87211a5c11",
+      "license_notice": "licenses/tzdata.txt"
+    },
+    {
+      "package": "x11-common",
+      "version": "1:7.7+24+deb13u1",
+      "architecture": "all",
+      "source": "xorg",
+      "depends": "lsb-base",
+      "pre_depends": "",
+      "sha256": "57a981938506b26dc552f19cafeaa8c04e9b59dc7508509151f8507a9d4e5f24",
+      "license_notice": "licenses/x11-common.txt"
+    },
+    {
+      "package": "xkb-data",
+      "version": "2.42-1",
+      "architecture": "all",
+      "source": "xkeyboard-config",
+      "depends": "",
+      "pre_depends": "",
+      "sha256": "196ff18533382f64e057ea49df2bb486bd4275a4cc0917361edb560b8756dada",
+      "license_notice": "licenses/xkb-data.txt"
+    },
+    {
+      "package": "zlib1g",
+      "version": "1:1.3.dfsg+really1.3.1-1+deb13u1",
+      "architecture": "arm64",
+      "source": "zlib",
+      "depends": "libc6 (>= 2.17)",
+      "pre_depends": "",
+      "sha256": "0e41b3d7ad8ad7fcd36dd4d61ca91a70018478fc4af652e044f4be770784ddff",
+      "license_notice": "licenses/zlib1g.txt"
+    }
+  ]
+}

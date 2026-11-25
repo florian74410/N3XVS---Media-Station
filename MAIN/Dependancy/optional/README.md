@@ -1,0 +1,1 @@
+Les profils optional, storage et session sont indépendants du cœur. Les plugins GStreamer bad/ugly sont disponibles sur sélection explicite. UxPlay, Miracast et XMLTV restent à évaluer sur la machine réelle. Le lanceur ne télécharge aucun DRM.
