@@ -4,7 +4,7 @@ Branche feat/nexus-multimedia-0.1, issue de main au commit dabfda603a73ff27cb1f0
 
 | Fonction | Essai et résultat |
 |---|---|
-| Interface native | Lancement Qt Quick réel, sans navigateur. Rendu logiciel hors écran en 1280×800, 1920×1080, 2560×1440 et 640×480. Souris vers Streaming puis Tab/Espace vers TV Direct. Chargement des sept pages et sortie propre. |
+| Interface native | Lancement Qt Quick réel, sans navigateur. Rendu logiciel hors écran en 1280×800, 1920×1080, 2560×1440 et 640×480. Souris vers Netflix puis Tab/Espace vers Disney+. Chargement des huit entrées de navigation et sortie propre. |
 | X11 | Démarrage, statut et arrêt via xcb sur un serveur Xvfb. Le sandbox limite l'énumération des interfaces réseau. |
 | ARM64 | Python 3.13 et PySide6 6.8.2.1 exécutés sous qemu-aarch64 dans un chroot utilisateur. Les 193 .deb du profil core ont été extraits dans la racine de test. Chargement de la GUI, rendu logiciel et export PNG 1280×800 réussis. Avertissement de locale C dans la racine minimale. |
 | Instances | Lancement daemon, second appel avec même PID, restart, statut, arrêt et statut arrêté exercés. Verrou conservé par le processus GUI. |
@@ -16,7 +16,7 @@ Branche feat/nexus-multimedia-0.1, issue de main au commit dabfda603a73ff27cb1f0
 | Session | Session séparée avec Openbox, superviseur, xbindkeys et Ctrl+N. Installation via gestionnaire de connexion et raccourci global non testés sur Mint. |
 | Contrôles | Sept tests unittest réussis. ShellCheck réussi sur les scripts shell et lancement Qt sans erreur QML. installation.sh --dry-run exécuté. Le profil ARM64 refuse l'hôte amd64. |
 | Ressources | Sur un échantillon au repos du prototype x86_64 offscreen software, RSS 90 784 KiB et CPU 0,67 % d'un cœur sur 3 s. Ces chiffres excluent Firefox et la lecture. |
-| Visuels | Catalogue et bibliothèque de référence présents. Marges 28 px sur PC, 24 px entre tuiles, sections espacées de 30 px. Fond bleu nuit en attendant la ville originale. |
+| Visuels | Catalogue et bibliothèque de référence présents. Ville originale intégrée, deux compositions interactives testées en 640×480, 1280×800, 1672×941, 1920×1080 et 2560×1440. Rendu de Bibliothèque également capturé sur ARM64 émulé. |
 
 ## Dépendances hors ligne
 

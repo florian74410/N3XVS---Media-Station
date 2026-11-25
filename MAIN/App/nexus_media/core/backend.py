@@ -105,6 +105,10 @@ class Backend(QObject):
     def items(self, term, offset, watching):
         return self.catalog.page(term, offset, watching)
 
+    @Slot(result=int)
+    def mediaCount(self):
+        return self.catalog.db.execute("SELECT COUNT(*) FROM media").fetchone()[0]
+
     @Slot(result=str)
     def summary(self):
         count = self.catalog.db.execute("SELECT COUNT(*) FROM media").fetchone()[0]

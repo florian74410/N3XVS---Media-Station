@@ -1,7 +1,7 @@
 # Interface salon
 
-La palette se trouve dans ui/theme/Palette.qml. Fond bleu nuit #090f19, panneaux #122131, focus #62cfff, texte principal #eef6ff. Les carrousels utilisent ListView avec 24 px entre tuiles, jusqu'à six cartes en largeur et une page SQLite de 48 entrées. Les sections sont séparées de 30 px. Sous 780 px la navigation latérale se réduit à des pictogrammes.
+Les deux compositions utilisent les coordonnées de la maquette de 1672 × 941 comme base. Les éléments de marque, illustrations et pictogrammes fournis sont rangés dans Assets/Interface. La ville originale de 740 × 413 est dans Assets/Backgrounds/nexus-city.png et sa copie intacte dans Assets/References/03-background-original.png. La barre supérieure, la navigation latérale, les panneaux, les boutons, les carrousels et les fiches sont des composants QML. Les rangées passent au défilement horizontal et les groupes de colonnes s'empilent sur les petites fenêtres.
 
-Les paysages illustrent six œuvres fictives créées pour cette démo. Les affiches de la maquette Netflix ne représentent pas une disponibilité vérifiée. Le visuel utilisateur attendu à Backgrounds/nexus-city.png est affiché avec PreserveAspectCrop. En son absence le fond bleu nuit prend le relais.
+Bibliothèque affiche les fiches de démonstration quand le catalogue est vide. Choisir « Bibliothèque locale » permet d'indexer un dossier. Les compteurs et l'état du réseau reflètent les sources réelles. Les vues Netflix et Disney+ ouvrent le catalogue de démonstration. Le bouton de service ouvre la destination officielle avec consentement. Les notes et progressions de démonstration reproduisent la maquette.
 
-La référence 01 guide le bandeau et les rangées. La référence 02 guide les états de visionnage et la bibliothèque. Les captures Qt dans Captures/ montrent la version exécutée.
+Captures x86_64 de la vraie fenêtre Qt en rendu logiciel dans Captures/, préfixe nexus pour Bibliothèque et streaming pour Netflix. Les tailles testées sont 640×480, 1280×800, 1672×941, 1920×1080 et 2560×1440.

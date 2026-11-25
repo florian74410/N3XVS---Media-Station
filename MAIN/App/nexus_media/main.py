@@ -27,8 +27,14 @@ def main():
         ctx.setContextProperty("station", backend)
         ctx.setContextProperty("loginName",getpass.getuser())
         import json
-        demo = json.loads((Path(__file__).parent/"data/demo.json").read_text())
-        ctx.setContextProperty("demoItems", [dict(title=t, genre=g, art=QUrl.fromLocalFile(str(Path(__file__).resolve().parents[2]/f"Assets/Posters/landscape-{i}.jpg"))) for i,(t,g) in enumerate(demo)])
+        assets = Path(__file__).resolve().parents[2]/"Assets"/"Interface"
+        ctx.setContextProperty("skinUrl",assets.as_uri()+"/")
+        demo = json.loads((Path(__file__).parent/"data/showcase.json").read_text())
+        ctx.setContextProperty("demoItems", [
+            dict(title=title, info=info, score=score, position=position, duration=100,
+                 seen=seen, category=category, demo=True, art=(assets/(key+".png")).as_uri())
+            for key,title,info,score,position,seen,category in demo
+        ])
         city = Path(__file__).resolve().parents[2]/"Assets/Backgrounds/nexus-city.png"
         ctx.setContextProperty("cityUrl", QUrl.fromLocalFile(str(city)) if city.exists() else QUrl())
         engine.load(QUrl.fromLocalFile(str(Path(__file__).parent/"ui/Main.qml")))

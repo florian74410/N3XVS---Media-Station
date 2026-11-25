@@ -1,17 +1,21 @@
 import QtQuick
 import QtQuick.Controls
-import QtQuick.Layouts
-import "../theme" as Design
-RowLayout {
-    property bool compact: false
+Item {
+    id:bar
+    property bool compact:false
     signal settingsRequested()
     signal usersRequested()
     signal accountsRequested()
-    spacing: 10
-    Label {text:"N E X U S"; color:Design.Palette.ink; font.bold:true; font.pixelSize:24}
-    Label {visible:!compact; text:" / MEDIA STATION"; color:Design.Palette.accent; font.pixelSize:12}
-    Item {Layout.fillWidth:true}
-    OutlinedButton {visible:!compact; text:"Utilisateurs"; onClicked:parent.usersRequested()}
-    OutlinedButton {visible:!compact; text:"Comptes"; onClicked:parent.accountsRequested()}
-    NeonButton {text:"Paramètres"; onClicked:parent.settingsRequested()}
+    BrandLogo {width:bar.compact?225:426; height:parent.height}
+    Row {anchors.right:parent.right; anchors.rightMargin:10; anchors.verticalCenter:parent.verticalCenter; spacing:10
+        Repeater {
+            model:["Paramètres","Utilisateurs","Comptes"]
+            AbstractButton {id:control;required property string modelData;required property int index
+                visible:index===0||!bar.compact; width:132;height:43;hoverEnabled:true;Accessible.name:modelData
+                contentItem:Image {source:skinUrl+["settings","users","accounts"][control.index]+".png";fillMode:Image.PreserveAspectFit}
+                background:Rectangle {radius:22;color:"transparent";border.color:control.activeFocus||control.hovered?"#97eaff":"transparent"}
+                onClicked:{if(index===0)bar.settingsRequested();else if(index===1)bar.usersRequested();else bar.accountsRequested()}
+            }
+        }
+    }
 }

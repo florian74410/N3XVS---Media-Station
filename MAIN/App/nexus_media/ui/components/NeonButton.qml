@@ -1,13 +1,15 @@
 import QtQuick
 import QtQuick.Controls
-import "../theme" as Design
 Button {
     id: b
-    property bool selected: false
-    hoverEnabled: true
-    implicitHeight: 42
-    leftPadding: 14
-    rightPadding: 14
-    contentItem: Text { text: b.text; font.pixelSize: 14; color: b.selected ? Design.Palette.accent : Design.Palette.ink; verticalAlignment: Text.AlignVCenter; horizontalAlignment: Text.AlignHCenter; elide: Text.ElideRight }
-    background: Rectangle { radius: 10; color: b.selected || b.hovered ? "#203a50" : Design.Palette.panel; border.color: b.activeFocus || b.selected ? Design.Palette.accent : Design.Palette.edge }
+    property bool selected:false
+    property bool pill:false
+    property int labelSize:16
+    hoverEnabled:true; implicitHeight:44
+    leftPadding:6; rightPadding:6
+    contentItem: Text { text:b.text; textFormat:Text.PlainText; font.pixelSize:b.labelSize; font.weight:Font.DemiBold; color:"white"; horizontalAlignment:Text.AlignHCenter; verticalAlignment:Text.AlignVCenter; elide:Text.ElideRight }
+    background: Item {
+        BorderImage {anchors.fill:parent; source:skinUrl+(b.selected?"active":b.pill?"cta":"button")+".png"; border.left:12; border.right:12; border.top:9; border.bottom:9}
+        Rectangle {anchors.fill:parent; radius:b.pill?height/2:10; color:b.hovered?"#234ac9ff":"transparent"; border.color:b.activeFocus?"white":"transparent"}
+    }
 }
