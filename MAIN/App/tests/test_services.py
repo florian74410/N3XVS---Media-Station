@@ -44,3 +44,29 @@ class Services(unittest.TestCase):
     def test_missing_player(self,_):
         with self.assertRaisesRegex(ValueError,"VLC absent"):
             play("/un film.mp4")
+
+class Handoff(unittest.TestCase):
+    def test_external_exit_restores_gui(self):
+        from unittest.mock import Mock
+        from core.backend import Backend
+        from PySide6.QtCore import QCoreApplication
+        import os
+        self.app=QCoreApplication.instance() or QCoreApplication([])
+        with tempfile.TemporaryDirectory() as temp, patch.dict(os.environ,XDG_DATA_HOME=temp):
+            backend=Backend()
+            self.addCleanup(backend.catalog.db.close)
+            changes=[]
+            backend.external.connect(changes.append)
+            proc=Mock(returncode=0)
+            proc.poll.side_effect=[None,0]
+            profile=Mock()
+            with patch("core.backend.launch",return_value=(proc,profile)) as launcher:
+                backend.provider("Netflix")
+                backend.provider("Disney+")
+                launcher.assert_called_once_with("https://www.netflix.com/")
+                backend.poll()
+                backend.poll()
+            self.assertEqual(changes,[True,False])
+            profile.cleanup.assert_called_once()
+            backend.timer.stop()
+            backend.watcher.stop()

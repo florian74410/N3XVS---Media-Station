@@ -4,7 +4,7 @@ from pathlib import Path
 import sys
 import tempfile
 import os
-from PySide6.QtCore import QTimer, Qt
+from PySide6.QtCore import QTimer, Qt, QPoint
 from PySide6.QtGui import QGuiApplication
 from PySide6.QtQuick import QQuickWindow
 from PySide6.QtTest import QTest
@@ -15,6 +15,7 @@ import main
 def run():
     parser = argparse.ArgumentParser()
     parser.add_argument("--captures", type=Path)
+    parser.add_argument("--mapped", type=Path)
     args = parser.parse_args()
     app_main = QGuiApplication.exec
     errors = []
@@ -29,7 +30,18 @@ def run():
                 assert img.width()==width and img.height()==height
                 if args.captures:
                     assert img.save(str(args.captures/f"nexus-{width}x{height}.png"))
+            if args.mapped:
+                paths={line.split()[-1] for line in Path("/proc/self/maps").read_text().splitlines() if "/" in line}
+                args.mapped.write_text("\n".join(sorted(paths))+"\n")
             window.resize(1280,800)
+            QTest.qWait(100)
+            # Full-size sidebar, second button. Exercise pointer and focus activation.
+            QTest.mouseClick(window,Qt.MouseButton.LeftButton,Qt.KeyboardModifier.NoModifier,QPoint(90,160))
+            assert window.property("page")=="Streaming", window.property("page")
+            QTest.keyClick(window,Qt.Key.Key_Tab)
+            QTest.keyClick(window,Qt.Key.Key_Space)
+            QTest.qWait(30)
+            assert window.property("page")=="TV Direct", window.property("page")
             for page in window.property("sections").toVariant():
                 window.setProperty("page",page)
                 QTest.qWait(40)

@@ -4,6 +4,7 @@ import os
 import sys
 import signal
 import fcntl
+import getpass
 from PySide6.QtCore import QUrl, QTimer
 from PySide6.QtGui import QGuiApplication
 from PySide6.QtQml import QQmlApplicationEngine
@@ -24,6 +25,7 @@ def main():
         engine = QQmlApplicationEngine()
         ctx = engine.rootContext()
         ctx.setContextProperty("station", backend)
+        ctx.setContextProperty("loginName",getpass.getuser())
         import json
         demo = json.loads((Path(__file__).parent/"data/demo.json").read_text())
         ctx.setContextProperty("demoItems", [dict(title=t, genre=g, art=QUrl.fromLocalFile(str(Path(__file__).resolve().parents[2]/f"Assets/Posters/landscape-{i}.jpg"))) for i,(t,g) in enumerate(demo)])
@@ -43,9 +45,8 @@ def main():
         try:
             return app.exec()
         finally:
-            backend.stopLocal()
+            backend.close()
             pid.unlink(missing_ok=True)
-            backend.catalog.db.close()
 
 if __name__ == "__main__":
     sys.exit(main())

@@ -1,4 +1,5 @@
 """Receive MediaServer advertisements during one bounded local SSDP search."""
+import http.client
 import socket
 import time
 from xml.etree.ElementTree import ParseError
@@ -29,6 +30,6 @@ def discover(timeout=2.5):
     for host, location in list(found.items())[:6]:
         try:
             devices.append(describe(host,location))
-        except (ValueError,OSError,ParseError):
+        except (ValueError,OSError,ParseError,http.client.HTTPException):
             devices.append(dict(title=host+" · description indisponible",host=host))
     return devices

@@ -1,4 +1,7 @@
 import json
+import http.client
+import subprocess
+import sqlite3
 import os
 from pathlib import Path
 import threading
@@ -56,7 +59,7 @@ class Backend(QObject):
         def worker():
             try:
                 self.browsed.emit(browse(server,folder,max(0,offset)))
-            except (ValueError,KeyError,OSError,ParseError) as exc:
+            except (ValueError,KeyError,OSError,ParseError,http.client.HTTPException) as exc:
                 self.browsed.emit([])
                 self.message.emit(str(exc))
         threading.Thread(target=worker,daemon=True).start()
@@ -82,12 +85,13 @@ class Backend(QObject):
         self.catalog.put("root", root)
         self.busy = True
         def worker():
+            result = "Échec du scan"
             try:
                 result = f"{scan(root, self.directory)} média(s) ajouté(s) ou actualisé(s)"
-            except (OSError, ValueError, RuntimeError) as exc:
+            except (OSError, ValueError, RuntimeError, sqlite3.Error) as exc:
                 result = str(exc)
             finally:
-                self.scanned.emit(locals().get("result", "Échec du scan"))
+                self.scanned.emit(result)
         threading.Thread(target=worker, daemon=True).start()
         self.message.emit("Indexation en cours…")
 
@@ -179,11 +183,32 @@ class Backend(QObject):
             self.proc=None
             self.controls.emit(False)
 
+    @Slot(str)
+    def toggleWatchlist(self, path):
+        with self.catalog.db:
+            self.catalog.db.execute("UPDATE media SET watchlist=1-watchlist WHERE path=?",(path,))
+        self.changed.emit()
+
     @Slot(str, float, bool)
     def bookmark(self, path, seconds, seen):
         with self.catalog.db:
             self.catalog.db.execute("UPDATE media SET position=max(0,?),seen=? WHERE path=?", (seconds, seen, path))
         self.changed.emit()
+
+    def close(self):
+        self.watcher.stop()
+        self.timer.stop()
+        self.stopLocal()
+        if self.proc and self.proc.poll() is None:
+            self.proc.terminate()
+            try:
+                self.proc.wait(timeout=3)
+            except subprocess.TimeoutExpired:
+                self.proc.kill()
+                self.proc.wait()
+        if self.profile:
+            self.profile.cleanup()
+        self.catalog.db.close()
 
     def poll(self):
         if isinstance(self.proc, EmbeddedEngine):
