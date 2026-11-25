@@ -1,0 +1,1 @@
+Pas de binaire natif Linux ARM64 officiellement identifié pour les plateformes demandées. Voir MAIN/Docs/STREAMING.md pour sites/offres/DRM. Ne pas télécharger de faux installateurs, APK ou dépôts non officiels.

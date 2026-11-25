@@ -1,0 +1,9 @@
+# Optionnel tant que la lecture n'est pas validée
+vlc
+libvlc5
+python3-vlc
+ffmpeg
+gstreamer1.0-tools
+gstreamer1.0-plugins-base
+gstreamer1.0-plugins-good
+gstreamer1.0-libav

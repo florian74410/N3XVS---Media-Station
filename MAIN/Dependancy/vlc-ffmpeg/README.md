@@ -1,0 +1,1 @@
+VLC, libVLC et FFmpeg : https://www.videolan.org/ , https://www.ffmpeg.org/ . Décodage matériel S912 sous Debian non garanti. Les paquets `vlc` et `ffmpeg` installent les codecs libres et autorisés disponibles, pas les DRM Widevine propriétaires.

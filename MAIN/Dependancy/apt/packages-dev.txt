@@ -1,0 +1,5 @@
+# Build et tests seulement
+shellcheck
+python3-pytest
+python3-venv
+git

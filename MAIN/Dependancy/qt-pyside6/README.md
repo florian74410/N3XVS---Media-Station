@@ -1,0 +1,1 @@
+Qt6 QML + PySide6. Sources https://doc.qt.io/qtforpython-6/ et https://packages.debian.org/trixie/python3-pyside6.qtquick . Installer avec paquets ARM64 de la même release Debian. Ne pas ajouter d'Electron par défaut.

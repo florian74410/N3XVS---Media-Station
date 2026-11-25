@@ -1,0 +1,10 @@
+# Debian 13 trixie arm64 (liste initiale ; valider via apt-cache sur la cible)
+python3
+python3-pyside6.qtcore
+python3-pyside6.qtgui
+python3-pyside6.qtqml
+python3-pyside6.qtquick
+qml6-module-qtquick
+qml6-module-qtquick-controls
+qml6-module-qtquick-layouts
+qml6-module-qtquick-window

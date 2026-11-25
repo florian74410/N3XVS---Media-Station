@@ -1,0 +1,1 @@
+DLNA / UPnP : GUPnP https://gitlab.gnome.org/GNOME/gupnp , Avahi https://avahi.org/ ; partages SMB/NFS. Prévoir découverte SSDP réseau local, timeouts et accès en lecture seule. AirPlay/Miracast après validation hardware.

@@ -1,0 +1,6 @@
+# Optionnel ; valider versions et besoin réel
+avahi-daemon
+smbclient
+cifs-utils
+nfs-common
+gupnp-tools
