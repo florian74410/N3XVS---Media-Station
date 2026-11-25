@@ -20,7 +20,7 @@ echo "[INFO] Architecture: $(dpkg --print-architecture 2>/dev/null || uname -m)"
 if [[ "$MODE" == check ]]; then
   missing=0
   for pkg in "${PACKAGES[@]}"; do
-    if dpkg-query -W -f='$(Status)' "$pkg" 2>/dev/null | grep -qx 'install ok installed'; then
+    if dpkg-query -W -f='${Status}' "$pkg" 2>/dev/null | grep -qx 'install ok installed'; then
       printf '[OK] %s\n' "$pkg"
     else
       printf '[MANQUANT] %s\n' "$pkg"
